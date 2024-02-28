@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Login Page</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h3 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #666666;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 2px solid #cccccc;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #ff7f50;
+        }
+        button[type="submit"] {
+            width: 100%;
+            background-color: #ff7f50;
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color:  #0056b3;
+        }
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .signup-link a {
+            color: #ff7f50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .signup-link a:hover {
+            color: #ff6347;
+        }
+    </style>
+    </head>
+    <body>
+        <form method="post">
+            <h3>Login Here</h3>
+            {% csrf_token %} 
+            <label for="username">Username</label>
+            <input type="text" placeholder="Enter Username" id="username" name="username">
+    
+            <label for="password">Password</label>
+            <input type="password" placeholder="Password" id="password" name="pass">
+    
+            <button type="submit">Log In</button>
+             
+            <a href="{% url 'signup' %}" >Create an account</a>
+        </form>
+    </body>
+    </html>
+    
