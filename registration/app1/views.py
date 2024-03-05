@@ -50,6 +50,17 @@ def LoginPage(request):
 
     return render (request,'login.html')
 
+def CoursesPage(request):
+    return render (request,'courses.html')
+
+def VideosPage(request):
+    return render (request,'videos.html')
+
+def ProjectsPage(request):
+    return render (request,'projects.html')
+
+def QuizPage(request):
+    return render (request,'quiz.html')
 
 
 def LogoutPage(request):
