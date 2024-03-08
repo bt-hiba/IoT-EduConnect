@@ -16,14 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app1 import views
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+  
+
 urlpatterns = [
     path('admin/', views.AdminPage,name='admin'),
     path('',views.SignupPage,name='signup'),
     path('login/',views.LoginPage,name='login'),
     path('home/',views.HomePage,name='home'),
+    path('index/',views.IndexPage,name='index'),
     path('courses/',views.CoursesPage,name='courses'),
     path('videos/',views.VideosPage,name='videos'),
+    path('add_video/',views.Add_videoPage,name='add_video'),
+    path('watch/',views.WatchPage,name='watch'),
     path('projects/',views.ProjectsPage,name='projects'),
     path('quiz/',views.QuizPage,name='quiz'),
     path('logout/',views.LogoutPage,name='logout'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

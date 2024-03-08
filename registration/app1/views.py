@@ -2,12 +2,14 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from .forms import VideosForm  # Modifier l'importation pour correspondre au chemin de votre formulaire
+from .models import Videos
 
 # Create your views here.
 
 @login_required(login_url='login') # bach doz lay page akhra khasssek login first 
 def HomePage(request):
-    return render (request,'home.html')
+   return render (request,'home.html')
 
 @login_required(login_url='login') 
 def AdminPage(request):
@@ -54,14 +56,36 @@ def CoursesPage(request):
     return render (request,'courses.html')
 
 def VideosPage(request):
-    return render (request,'videos.html')
+    videos = Videos.objects.all()  # Récupérer toutes les vidéos depuis la base de données
+    print(videos)
+    return render(request, 'videos.html', {'videos': videos})
+    
+
+
+def Add_videoPage(request):
+    if request.method == 'POST':
+        form = VideosForm(request.POST)
+        if form.is_valid():
+            
+            form.save()
+            return redirect('admin')
+    else:
+        form = VideosForm()
+    return render(request, 'add_video.html', {'form': form})
+
+
+def WatchPage(request):
+    return render (request,'watch-video.html')
+
+
+def IndexPage(request):
+    return render (request,'index.html')
 
 def ProjectsPage(request):
     return render (request,'projects.html')
 
 def QuizPage(request):
     return render (request,'quiz.html')
-
 
 def LogoutPage(request):
     logout(request)

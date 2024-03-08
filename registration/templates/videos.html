@@ -1,0 +1,250 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
+
+    html,
+    body {
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      height: 100%;
+      width: 100%; 
+      background: #FFF;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+    }
+     .header {
+      background-color: #f0f0f0; /* Couleur de fond */
+      color: #fff; /* Couleur du texte */
+      padding: 10px 20px; /* Espacement intérieur */
+    }
+    .header .flex {
+        display: flex;
+        justify-content: space-between; /* Répartir les éléments horizontalement */
+        align-items: center;
+    }
+    
+    .header .flex .right-align {
+        margin-left: auto; /* Aligner à droite */
+        margin-left: 10px; /* Réduire l'espace entre les liens */
+    }
+    
+    
+    .header .logo {
+      font-size: 24px; /* Taille de la police pour le logo */
+      text-decoration: none; /* Supprimer le soulignement des liens */
+    }
+    
+    .header .flex a {
+      color: #000; /* Couleur du texte des liens */
+      margin-left: 30px; /* Marge à gauche pour les éléments suivants du logo */
+      text-decoration: none; /* Supprimer le soulignement des liens */
+    }
+    
+    .header .flex a:hover {
+      color: #ccc; /* Couleur du texte des liens au survol */
+    }
+    
+    .search-container {
+      display: inline-block;
+      position: relative;
+    }
+    
+    .search-container input[type="text"] {
+      padding: 10px;
+      width: 600px;
+    }
+    
+    .search-container button {
+      padding: 12px 15px;
+      background-color: #ccc;
+      border: none;
+      cursor: pointer;
+    }
+    
+    /* Ajoutez ces styles pour le style de la barre de recherche */
+    .search-container input[type="text"]::placeholder {
+      color: #999;
+    }
+    
+    .search-container button:hover {
+      background-color: #aaa;
+    }
+    .search-bar {
+      text-align: center;
+      padding: 10px 0; /* Réduire l'espacement supérieur et inférieur de la barre de recherche */
+      margin-bottom: 20px; /* Ajouter une marge inférieure pour créer de l'espace entre la barre de recherche et les cartes */
+    }
+    
+    .wrapper {
+      display: table;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .container-fostrap {
+      display: table-cell;
+      padding: 1em;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .fostrap-logo {
+      width: 100px;
+      margin-bottom:15px
+    }
+    h1.heading {
+      color: #fff;
+      font-size: 1.15em;
+      font-weight: 900;
+      margin: 0 0 0.5em;
+      color: #505050;
+    }
+    @media (min-width: 450px) {
+      h1.heading {
+        font-size: 3.55em;
+      }
+    }
+    @media (min-width: 760px) {
+      h1.heading {
+        font-size: 3.05em;
+      }
+    }
+    @media (min-width: 900px) {
+      h1.heading {
+        font-size: 3.25em;
+        margin: 0 0 0.3em;
+      }
+    } 
+    
+    
+    .video-cards .card:hover {
+        box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    
+   
+    .video-cards .img-card {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .video-cards .img-card:hover .play-overlay {
+        opacity: 1;
+    }
+    
+    .video-cards .play-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .video-cards .play-overlay i {
+        color: #fff;
+        font-size: 50px;
+    }
+    
+    
+    
+    .video-cards .img-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: all .25s ease;
+    }
+    
+    .video-cards .card-content {
+        padding: 15px;
+        text-align: left;
+    }
+    
+    .video-cards .card-title {
+        margin-top: 0px;
+        font-weight: 700;
+        font-size: 1.65em;
+    }
+    
+    .video-cards .card-title a {
+        color: #000;
+        text-decoration: none !important;
+    }
+    
+    .video-cards .card-read-more {
+        border-top: 1px solid #D4D4D4;
+    }
+    
+    .video-cards .card-read-more a {
+        text-decoration: none !important;
+        padding: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    
+</style>
+
+<body>      
+    
+       
+    <header class="header">
+     
+      <section class="flex">
+    
+         <a href="{% url 'home' %}" class="logo">Educa.</a>
+         <a href="{% url 'home' %}"><i></i>home</a>
+         <a href="{% url 'courses' %}"><i></i>courses</a>
+         <a href="{% url 'videos' %}"><i></i>videos</a>
+         <a href="{% url 'projects' %}"><i></i>projects</a>
+         <a href="{% url 'quiz' %}"><i></i>exersises</a>
+         <a href="{% url 'logout' %}"><i></i>logout</a>
+    
+      </section>
+    
+    </header> 
+  
+    <section class="search-bar">
+      <div class="search-container">
+          <input type="text" placeholder="Search...">
+          <button type="submit"><i class="fa fa-search"></i></button>
+      </div>
+  </section>
+
+<section class="video-cards">
+    <div class="container">
+            <div class="row">
+                {% for video in videos %}
+                <div class="col-xs-12 col-sm-4">
+                    <div class="card">
+                        <div class="img-card">
+                           <img src="{% static 'images/iot1.jpg'%}" />   <!-- Utilisez l'URL de la vidéo depuis le modèle -->
+                           
+                            <a href="{% url 'watch' %}"><div class="play-overlay"><i class="fas fa-play"></i></div></a>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">{{video.title}}</h4>  <!-- Utilisez le titre de la vidéo depuis le modèle -->
+                            <p>{{video.description}}</p>  <!-- Utilisez la description de la vidéo depuis le modèle -->
+                            <a href="{% url 'watch' %}" class="btn btn-link btn-block">Watch Video</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Ajoutez d'autres cartes vidéo ici -->
+        
+            
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
