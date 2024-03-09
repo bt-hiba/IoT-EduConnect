@@ -46,7 +46,7 @@ def LoginPage(request):
                 return redirect('admin')
             else:
                 # Rediriger l'utilisateur ordinaire vers la page home
-                return redirect('home')
+                return redirect('courses')
         else:
             return HttpResponse ("Username or Password is incorrect!!!")
 
@@ -56,24 +56,24 @@ def CoursesPage(request):
     return render (request,'courses.html')
 
 def VideosPage(request):
-    videos = Videos.objects.all()  # Récupérer toutes les vidéos depuis la base de données
-    print(videos)
-    return render(request, 'videos.html', {'videos': videos})
+    img=Videos.objects.all()
+    return render(request,"videos.html",{"img":img})
     
 
 
 def Add_videoPage(request):
-    if request.method == 'POST':
-        form = VideosForm(request.POST)
-        if form.is_valid():
-            
-            form.save()
-            return redirect('admin')
+    if request.method == "POST":
+       form=VideosForm(data=request.POST,files=request.FILES)
+       if form.is_valid():
+          form.save()
+          obj=form.instance
+          return render(request,"add_video.html",{"obj":obj})
     else:
-        form = VideosForm()
-    return render(request, 'add_video.html', {'form': form})
-
-
+       form=VideosForm()
+    img=Videos.objects.all()
+    return render(request,"add_video.html",{"img":img,"form":form})
+   
+   
 def WatchPage(request):
     return render (request,'watch-video.html')
 

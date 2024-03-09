@@ -219,31 +219,31 @@
   </section>
 
 <section class="video-cards">
-    <div class="container">
-            <div class="row">
-                {% for video in videos %}
-                <div class="col-xs-12 col-sm-4">
-                    <div class="card">
-                        <div class="img-card">
-                           <img src="{% static 'images/iot1.jpg'%}" />   <!-- Utilisez l'URL de la vidéo depuis le modèle -->
-                           
-                            <a href="{% url 'watch' %}"><div class="play-overlay"><i class="fas fa-play"></i></div></a>
-                        </div>
-                        <div class="card-content">
-                            <h4 class="card-title">{{video.title}}</h4>  <!-- Utilisez le titre de la vidéo depuis le modèle -->
-                            <p>{{video.description}}</p>  <!-- Utilisez la description de la vidéo depuis le modèle -->
-                            <a href="{% url 'watch' %}" class="btn btn-link btn-block">Watch Video</a>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            
-            <!-- Ajoutez d'autres cartes vidéo ici -->
-        
-            
-        </div>
-    </div>
+  <div class="container">
+          <div class="row">
+            {% for x in img %}
+              <div class="col-xs-12 col-sm-4">
+                  <div class="card">
+                      <div class="img-card">
+                         <img src="{{x.image.url}}" />   <!-- Utilisez l'URL de la vidéo depuis le modèle -->
+                         
+                          <a href="{% url 'watch' %}"><div class="play-overlay"><i class="fas fa-play"></i></div></a>
+                      </div>
+                      <div class="card-content">
+                          <h4 class="card-title">{{x.title}}</h4>  <!-- Utilisez le titre de la vidéo depuis le modèle -->
+                          <p>{{x.description}}</p>  <!-- Utilisez la description de la vidéo depuis le modèle -->
+                          <a href="{% url 'watch' %}" class="btn btn-link btn-block">Watch Video</a>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+          </div>
+          
+          <!-- Ajoutez d'autres cartes vidéo ici -->
+      
+          
+      </div>
+  </div>
 </section>
 
 </body>
