@@ -2,8 +2,9 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-from .forms import VideosForm  # Modifier l'importation pour correspondre au chemin de votre formulaire
-from .models import Videos
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import VideosForm  , CoursesForm
+from .models import Videos , Comment , Courses
 
 # Create your views here.
 
@@ -53,8 +54,21 @@ def LoginPage(request):
     return render (request,'login.html')
 
 def CoursesPage(request):
-    return render (request,'courses.html')
+     imgg=Courses.objects.all()
+     return render(request,"courses.html",{"img":imgg})
 
+def Add_CoursesPage(request):
+     if request.method == "POST":
+       form=CoursesForm(data=request.POST,files=request.FILES)
+       if form.is_valid():
+          form.save()
+          obj=form.instance
+          return render(request,"add_courses.html",{"obj":obj})
+     else:
+       form=CoursesForm()
+     imgg=Courses.objects.all()
+     return render(request,"add_courses.html",{"img":imgg,"form":form})
+    
 def VideosPage(request):
     img=Videos.objects.all()
     return render(request,"videos.html",{"img":img})
@@ -74,8 +88,19 @@ def Add_videoPage(request):
     return render(request,"add_video.html",{"img":img,"form":form})
    
    
-def WatchPage(request):
-    return render (request,'watch-video.html')
+def WatchPage(request, videos_id):
+    video = get_object_or_404(Videos, pk=videos_id)
+    comments = video.comments.all()
+    return render(request, 'watch_video.html', {'video': video, 'comments': comments})
+
+def add_comment(request, videos_id):
+    video = get_object_or_404(Videos, pk=videos_id)
+    if request.method == 'POST':
+        user_name = request.POST['user_name']
+        text = request.POST['text']
+        Comment.objects.create(video=video, user_name=user_name, text=text)
+        return redirect('watch', videos_id=videos_id)  
+    return redirect('watch', videos_id=videos_id) 
 
 
 def IndexPage(request):

@@ -227,12 +227,12 @@
                       <div class="img-card">
                          <img src="{{x.image.url}}" />   <!-- Utilisez l'URL de la vidéo depuis le modèle -->
                          
-                          <a href="{% url 'watch' %}"><div class="play-overlay"><i class="fas fa-play"></i></div></a>
+                          <a href="{% url 'watch' videos_id=x.id %}"><div class="play-overlay"><i class="fas fa-play"></i></div></a>
                       </div>
                       <div class="card-content">
                           <h4 class="card-title">{{x.title}}</h4>  <!-- Utilisez le titre de la vidéo depuis le modèle -->
                           <p>{{x.description}}</p>  <!-- Utilisez la description de la vidéo depuis le modèle -->
-                          <a href="{% url 'watch' %}" class="btn btn-link btn-block">Watch Video</a>
+                          <a href="{% url 'watch' videos_id=x.id %}" class="btn btn-link btn-block">Watch Video</a>
                       </div>
                   </div>
               </div>

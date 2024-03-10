@@ -205,135 +205,26 @@ h1.heading {
         <div class="content">
             <div class="container">
                 <div class="row">
+                  {% for x in imgg %}
                       <div class="col-xs-12 col-sm-4">
                         <div class="card">
                             <a class="img-card" href="">
-                              <img src="{% static 'images/iot 2.png'%}" /> 
-                          </a>
+                              <img src="{{x.image.url}}" /></a>
                             <div class="card-content">
                                 <h4 class="card-title">
-                                    <a href=""> Chapitre 1 : Introduction à l'Internet des Objets (IoT)
-                                  </a>
+                                    <a href=""> {{x.title}}</a>
                                 </h4>
                                 <p class="">
-                                  Ce chapitre introductif plonge les lecteurs dans l'univers fascinant de l'IoT en explorant ses concepts
-                                </p>
+                                  C{{x.description}}</p>
                             </div>
                             <div class="card-read-more">
-                                <a href="courses.html" class="btn btn-link btn-block">
-                                    Read More
-                                </a>
+                                <a href="courses.html" class="btn btn-link btn-block">Read More</a>
                             </div>
                         </div>
                       </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="card">
-                            <a class="img-card" href="">
-                              <img src="{% static 'images/iot 3.jpg'%}" /> 
-                          </a>
-                            <div class="card-content">
-                                <h4 class="card-title">
-                                    <a href=""> chapitre 2: Technologies de Communication pour l'IoT
-                                  </a>
-                                </h4>
-                                <p class="">
-                                  Ce chapitre explore en profondeur les différentes technologies de communication 
-                                </p>
-                            </div>
-                            <div class="card-read-more">
-                                <a href="courses.html" class="btn btn-link btn-block">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-xs-12 col-sm-4">
-                        <div class="card">
-                            <a class="img-card" href="">
-                              <img src="{% static 'images/iot 4.jpg'%}" /> 
-                          </a>
-                            <div class="card-content">
-                                <h4 class="card-title">
-                                    <a href=""> Chapitre 3 : Capteurs et Actuateurs dans l'IoT
-                                  </a>
-                                </h4>
-                                <p class="">
-                                  Ce chapitre se concentre sur l'importance des capteurs et des actionneurs dans l'IOT
-                                </p>
-                            </div>
-                            <div class="card-read-more">
-                                <a href="couses.html" class="btn btn-link btn-block">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="card">
-                            <a class="img-card" href="">
-                            <img src="https://3.bp.blogspot.com/-bAsTyYC8U80/VtLZRKN6OlI/AAAAAAAABjY/kAoljiMALkQ/s400/material%2Bnavbar.jpg" />
-                          </a>
-                            <div class="card-content">
-                                <h4 class="card-title">
-                                    <a href=""> Material Design Responsive Menu
-                                  </a>
-                                </h4>
-                                <p class="">
-                                    Material Design is a visual programming language made by Google. Language programming...
-                                </p>
-                            </div>
-                            <div class="card-read-more">
-                                <a href="courses.html" class="btn btn-link btn-block">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-xs-12 col-sm-4">
-                        <div class="card">
-                            <a class="img-card" href="">
-                            <img src="https://3.bp.blogspot.com/-bAsTyYC8U80/VtLZRKN6OlI/AAAAAAAABjY/kAoljiMALkQ/s400/material%2Bnavbar.jpg" />
-                          </a>
-                            <div class="card-content">
-                                <h4 class="card-title">
-                                    <a href=""> Material Design Responsive Menu
-                                  </a>
-                                </h4>
-                                <p class="">
-                                    Material Design is a visual programming language made by Google. Language programming...
-                                </p>
-                            </div>
-                            <div class="card-read-more">
-                                <a href="couses.html" class="btn btn-link btn-block">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="card">
-                            <a class="img-card" href="">
-                            <img src="https://1.bp.blogspot.com/-Bii3S69BdjQ/VtdOpIi4aoI/AAAAAAAABlk/F0z23Yr59f0/s640/cover.jpg" />
-                          </a>
-                            <div class="card-content">
-                                <h4 class="card-title">
-                                    <a href=""> Bootstrap 3 Carousel FadeIn Out Effect
-                                  </a>
-                                </h4>
-                                <p class="">
-                                    Tutorial to make a carousel bootstrap by adding more wonderful effect fadein ...
-                                </p>
-                            </div>
-                            <div class="card-read-more">
-                                <a href="courses.html" class="btn btn-link btn-block">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                       
-                    
+                      {% endfor %}
                 </div>
+                
             </div>
         </div>
     </div>
