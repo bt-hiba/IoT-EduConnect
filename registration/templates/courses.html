@@ -126,7 +126,7 @@ h1.heading {
 } 
 .card {
   display: block; 
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     line-height: 1.42857143;
     background-color: #fff;
     border-radius: 2px;
@@ -218,7 +218,7 @@ h1.heading {
                                   C{{x.description}}</p>
                             </div>
                             <div class="card-read-more">
-                                <a href="courses.html" class="btn btn-link btn-block">Read More</a>
+                                <a href="{% url 'read' courses_id=x.id %}" class="btn btn-link btn-block">Read More</a>
                             </div>
                         </div>
                       </div>

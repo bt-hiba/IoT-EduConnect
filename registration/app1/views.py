@@ -55,19 +55,24 @@ def LoginPage(request):
 
 def CoursesPage(request):
      imgg=Courses.objects.all()
-     return render(request,"courses.html",{"img":imgg})
+     return render(request,"courses.html",{"imgg":imgg})
 
 def Add_CoursesPage(request):
      if request.method == "POST":
-       form=CoursesForm(data=request.POST,files=request.FILES)
-       if form.is_valid():
-          form.save()
-          obj=form.instance
-          return render(request,"add_courses.html",{"obj":obj})
+       forrm=CoursesForm(data=request.POST,files=request.FILES)
+       if forrm.is_valid():
+          forrm.save()
+          objj=forrm.instance
+          return render(request,"add_courses.html",{"objj":objj})
      else:
-       form=CoursesForm()
+       forrm=CoursesForm()
      imgg=Courses.objects.all()
-     return render(request,"add_courses.html",{"img":imgg,"form":form})
+     return render(request,"add_courses.html",{"imgg":imgg,"forrm":forrm})
+ 
+def ReadPage(request, courses_id):
+    cours = get_object_or_404(Courses, pk=courses_id)
+    print(cours.pdf.url)
+    return render(request, 'read_cours.html', {'cours': cours})
     
 def VideosPage(request):
     img=Videos.objects.all()

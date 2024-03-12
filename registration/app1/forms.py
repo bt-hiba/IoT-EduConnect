@@ -10,4 +10,4 @@ class VideosForm(forms.ModelForm):
 class CoursesForm(forms.ModelForm):
   class Meta:
     model=Courses
-    fields=("title","description","image","content")
+    fields=("title","description","image","pdf")

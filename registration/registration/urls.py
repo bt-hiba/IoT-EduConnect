@@ -30,6 +30,7 @@ urlpatterns = [
     path('home/',views.HomePage,name='home'),
     path('courses/',views.CoursesPage,name='courses'),
     path('add_courses/',views.Add_CoursesPage,name='add_courses'),
+    path('read/<int:courses_id>/', views.ReadPage, name='read'),
     path('videos/',views.VideosPage,name='videos'),
     path('add_video/',views.Add_videoPage,name='add_video'),
     path('watch/<int:videos_id>/', views.WatchPage, name='watch'),

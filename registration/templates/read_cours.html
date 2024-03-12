@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Course</title>
+    
+</head>
+<style>
+    /* Reset des styles de base */
+    body {
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%; 
+        background: #FFF;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+      }
+       .header {
+        background-color: #f0f0f0; /* Couleur de fond */
+        color: #fff; /* Couleur du texte */
+        padding: 10px 20px; /* Espacement intérieur */
+      }
+      .header .flex {
+          display: flex;
+          justify-content: space-between; /* Répartir les éléments horizontalement */
+          align-items: center;
+      }
+      
+      .header .flex .right-align {
+          margin-left: auto; /* Aligner à droite */
+          margin-left: 10px; /* Réduire l'espace entre les liens */
+      }
+      
+      
+      .header .logo {
+        font-size: 24px; /* Taille de la police pour le logo */
+        text-decoration: none; /* Supprimer le soulignement des liens */
+      }
+      
+      .header .flex a {
+        color: #000; /* Couleur du texte des liens */
+        margin-left: 30px; /* Marge à gauche pour les éléments suivants du logo */
+        text-decoration: none; /* Supprimer le soulignement des liens */
+      }
+      
+      .header .flex a:hover {
+        color: #ccc; /* Couleur du texte des liens au survol */
+      }
+.pdf-container {
+    margin-top: 20px;
+    width: 100%;
+    height: calc(100vh - 100px); /* 100px pour tenir compte de la hauteur de l'en-tête */
+    background-color: #ffffff;
+}
+
+iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+</style>
+<body>
+    <header class="header">
+     
+        <section class="flex">
+      
+           <a href="{% url 'home' %}" class="logo">Educa.</a>
+           <a href="{% url 'home' %}"><i></i>home</a>
+           <a href="{% url 'courses' %}"><i></i>courses</a>
+           <a href="{% url 'videos' %}"><i></i>videos</a>
+           <a href="{% url 'projects' %}"><i></i>projects</a>
+           <a href="{% url 'quiz' %}"><i></i>exersises</a>
+           <a href="{% url 'logout' %}"><i></i>logout</a>
+      
+        </section>
+      
+      </header> 
+    <div class="pdf-container">
+        <iframe id="pdf-viewer" src="{{ cours.pdf.url }}" width="100%" height="100%" ></iframe>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const pdfViewer = document.getElementById('pdf-viewer');
+            
+            // URL du PDF
+            const pdfUrl = "{{ cours.pdf.url }}";
+        
+            // Télécharger le PDF et l'intégrer dans l'iframe
+            fetch(pdfUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    const objectUrl = URL.createObjectURL(blob);
+                    pdfViewer.setAttribute('src', objectUrl);
+                })
+                .catch(error => console.error('Erreur lors du chargement du PDF:', error));
+        });
+        
+    </script> <!-- Lien vers votre fichier JavaScript -->
+</body>
+</html>
+

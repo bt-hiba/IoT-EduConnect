@@ -4,19 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Watch Video</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
+<style>
+  /* Reset des styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.header {
+    background-color: #42a5f5;
+    padding: 15px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.logo:hover {
+    text-decoration: underline;
+}
+
+.header a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.header a:hover {
+    color: #ffeb3b;
+}
+
+.video-container {
+    margin-top: 80px; /* Espacement du haut pour centrer verticalement */
+    display: flex; /* Utilisation de flexbox pour centrer horizontalement */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+}
+
+.video-container video {
+    max-width: 90%; /* La vidéo ne dépassera pas la largeur de son conteneur */
+    height: 70%; /* Hauteur proportionnelle à la largeur */
+    margin-bottom: 9px; /* Espacement en bas */
+}
+
+
+
+
+</style>
+
 <body>
-    <video width="640" height="360" controls>
-        <source src="{{ x.video_file.url }}" >
-        Your browser does not support the video tag.
-    </video>
-    
+    <header class="header">
+        <section class="flex">
+            <a href="{% url 'home' %}" class="logo">Educa.</a>
+            <a href="{% url 'home' %}"><i></i>Home</a>
+            <a href="{% url 'courses' %}"><i></i>Courses</a>
+            <a href="{% url 'videos' %}"><i></i>Videos</a>
+            <a href="{% url 'projects' %}"><i></i>Projects</a>
+            <a href="{% url 'quiz' %}"><i></i>Exercises</a>
+            <a href="{% url 'logout' %}"><i></i>Logout</a>
+        </section>
+    </header>
 
-    <h2>Comments:</h2>
-    {% for comment in comments %}
-        <p>{{ comment.user_name }}: {{ comment.text }}</p>
-    {% endfor %}
-
-    
+    <div class="video-container">
+    <video class="embed-responsive embed-responsive-16by9" controls="controls">
+      <source src="{{ video.video_url.url }}" type="video/mp4" />
+   </video>
+   
 </body>
 </html>
