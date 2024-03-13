@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Video</title>
-    <style>
+
+<style>
+    
  .header {
     background-color: #f0f0f0; /* Couleur de fond */
     color: #fff; /* Couleur du texte */
@@ -36,39 +38,24 @@
   .header .flex a:hover {
     color: #ccc; /* Couleur du texte des liens au survol */
   }
-  
-        form {
-            width: 400px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        input[type="text"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        
-        input[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
+  .form-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.form-container button {
+    margin-top: 10px;
+}
+
+.success-message {
+    margin-top: 20px;
+}
+
+</style>  
 <body>
     <header class="header">
    
@@ -76,20 +63,29 @@
       
            <a href="{% url 'home' %}" class="logo">Educa.</a>
            <a href="{% url 'home' %}"><i></i>home</a>
-           <a href="{% url 'add_courses' %}"><i></i>add courses</a>
-           <a href="{% url 'add_video' %}}"><i></i>add videos</a>
-           <a href="{% url 'add_projects' %}"><i></i>projects</a>
+           <a href="{% url 'courses' %}"><i></i>courses</a>
+           <a href="{% url 'videos' %}"><i></i>videos</a>
+           <a href="{% url 'projects' %}"><i></i>projects</a>
            <a href="{% url 'quiz' %}"><i></i>exersises</a>
            <a href="{% url 'logout' %}"><i></i>logout</a>
       
         </section>
       
       </header> 
-    <form action="" method="post">
-        
-        <a href="{% url 'add_video' %}">add videos</a>
-      
-      
-    </form>
+    <div class="container">
+        <form action="." method="post" enctype="multipart/form-data" class="form-container">
+
+            {% csrf_token %}
+            {{forrrm.as_p}}
+            
+            <button type="submit" class="btn btn-lg btn-success">Upload</button>
+            </form>
+            
+            {% if objjj %}
+            <h3>Succesfully uploaded : </h3>
+            {% endif %}
+
+    </div>
+
 </body>
 </html>

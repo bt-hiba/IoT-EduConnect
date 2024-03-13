@@ -35,6 +35,7 @@ urlpatterns = [
     path('add_video/',views.Add_videoPage,name='add_video'),
     path('watch/<int:videos_id>/', views.WatchPage, name='watch'),
     path('projects/',views.ProjectsPage,name='projects'),
+    path('add_projects/',views.Add_ProjectsPage,name='add_projects'),
     path('quiz/',views.QuizPage,name='quiz'),
     path('add_comment/',views.add_comment,name='add_comment'),
     path('logout/',views.LogoutPage,name='logout'),

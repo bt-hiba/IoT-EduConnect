@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import VideosForm  , CoursesForm
-from .models import Videos , Comment , Courses
+from .forms import VideosForm  , CoursesForm , ProjectsForm
+from .models import Videos , Comment , Courses , Projects
 
 # Create your views here.
 
@@ -112,7 +112,21 @@ def IndexPage(request):
     return render (request,'index.html')
 
 def ProjectsPage(request):
-    return render (request,'projects.html')
+    imggg=Projects.objects.all()
+    return render(request,"projects.html",{"imggg":imggg})
+
+
+def Add_ProjectsPage(request):
+     if request.method == "POST":
+       forrrm=ProjectsForm(data=request.POST,files=request.FILES)
+       if forrrm.is_valid():
+          forrrm.save()
+          objjj=forrrm.instance
+          return render(request,"add_projects.html",{"objjj":objjj})
+     else:
+       forrrm=ProjectsForm()
+     imggg=Projects.objects.all()
+     return render(request,"add_projects.html",{"imggg":imggg,"forrrm":forrrm})
 
 def QuizPage(request):
     return render (request,'quiz.html')
