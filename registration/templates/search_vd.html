@@ -171,18 +171,17 @@
 
   <h1 class="display-4 text-center my-5">All Videos</h1>
 
-  <form class="container d-flex my-4" role="search" action="{% url 'search_vd' %}" method="post">
-    {% csrf_token %}
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchedd">
-    <button type="submit" class="btn btn-primary ms-2">Search</button>
-</form>
+  <form class="container d-flex my-4" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <a href="#" type="submit" class="btn btn-primary ms-2">Search</a>
+  </form>
 
   <section class="wrapper">
     <div class="container-fostrap">
       <div class="content">
         <div class="container">
           <div class="row">
-            {% for x in img %}
+            {% for x in videos %}
             <div class="col-xs-12 col-sm-4">
               <div class="card">
                 <a class="img-card" href="{% url 'watch' videos_id=x.id %}">

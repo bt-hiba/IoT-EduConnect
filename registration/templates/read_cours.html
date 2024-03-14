@@ -1,105 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Read Course</title>
-    
+    <title>Read Cours</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <style>
+        * {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .pdf-container {
+            margin-top: 100px; /* Ajustez cette valeur selon vos besoins */
+            width: 100%;
+            height: calc(400vh - 600px); /* Ajustez cette valeur selon vos besoins */
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 775px;
+        }
+
+      
+    </style>
 </head>
-<style>
-    /* Reset des styles de base */
-    body {
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        height: 100%;
-        width: 100%; 
-        background: #FFF;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 400;
-      }
-       .header {
-        background-color: #f0f0f0; /* Couleur de fond */
-        color: #fff; /* Couleur du texte */
-        padding: 10px 20px; /* Espacement intérieur */
-      }
-      .header .flex {
-          display: flex;
-          justify-content: space-between; /* Répartir les éléments horizontalement */
-          align-items: center;
-      }
-      
-      .header .flex .right-align {
-          margin-left: auto; /* Aligner à droite */
-          margin-left: 10px; /* Réduire l'espace entre les liens */
-      }
-      
-      
-      .header .logo {
-        font-size: 24px; /* Taille de la police pour le logo */
-        text-decoration: none; /* Supprimer le soulignement des liens */
-      }
-      
-      .header .flex a {
-        color: #000; /* Couleur du texte des liens */
-        margin-left: 30px; /* Marge à gauche pour les éléments suivants du logo */
-        text-decoration: none; /* Supprimer le soulignement des liens */
-      }
-      
-      .header .flex a:hover {
-        color: #ccc; /* Couleur du texte des liens au survol */
-      }
-.pdf-container {
-    margin-top: 20px;
-    width: 100%;
-    height: calc(100vh - 100px); /* 100px pour tenir compte de la hauteur de l'en-tête */
-    background-color: #ffffff;
-}
 
-iframe {
-    border: none;
-    width: 100%;
-    height: 100%;
-}
-
-</style>
 <body>
-    <header class="header">
-     
-        <section class="flex">
-      
-           <a href="{% url 'home' %}" class="logo">Educa.</a>
-           <a href="{% url 'home' %}"><i></i>home</a>
-           <a href="{% url 'courses' %}"><i></i>courses</a>
-           <a href="{% url 'videos' %}"><i></i>videos</a>
-           <a href="{% url 'projects' %}"><i></i>projects</a>
-           <a href="{% url 'quiz' %}"><i></i>exersises</a>
-           <a href="{% url 'logout' %}"><i></i>logout</a>
-      
-        </section>
-      
-      </header> 
-    <div class="pdf-container">
-        <iframe id="pdf-viewer" src="{{ cours.pdf.url }}" width="100%" height="100%" ></iframe>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary d-none d-lg-block">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">IMC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'courses' %}">courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'videos' %}">videos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'projects' %}">projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'quiz' %}">quiz</a>
+                    </li>
+                </ul>
+
+                <a href="{% url 'logout' %}" class="btn btn-primary ms-2">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <h1 class="display-4 text-center my-5">{{ cours.title }}</h1>
+
+    <div class="pdf-container" style="margin-top: 50px;">
+        <iframe id="pdf-viewer" src="{{ cours.pdf.url }}?toolbar=0" frameborder="0"></iframe>
+        <div class="progress-bar"></div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const pdfViewer = document.getElementById('pdf-viewer');
-            
-            // URL du PDF
-            const pdfUrl = "{{ cours.pdf.url }}";
-        
-            // Télécharger le PDF et l'intégrer dans l'iframe
-            fetch(pdfUrl)
-                .then(response => response.blob())
-                .then(blob => {
-                    const objectUrl = URL.createObjectURL(blob);
-                    pdfViewer.setAttribute('src', objectUrl);
-                })
-                .catch(error => console.error('Erreur lors du chargement du PDF:', error));
-        });
-        
-    </script> <!-- Lien vers votre fichier JavaScript -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
 </body>
-</html>
 
+</html>

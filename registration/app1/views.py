@@ -53,6 +53,7 @@ def LoginPage(request):
 
     return render (request,'login.html')
 
+@login_required(login_url='login')
 def CoursesPage(request):
      imgg=Courses.objects.all()
      return render(request,"courses.html",{"imgg":imgg})
@@ -69,11 +70,13 @@ def Add_CoursesPage(request):
      imgg=Courses.objects.all()
      return render(request,"add_courses.html",{"imgg":imgg,"forrm":forrm})
  
+ 
 def ReadPage(request, courses_id):
     cours = get_object_or_404(Courses, pk=courses_id)
     print(cours.pdf.url)
     return render(request, 'read_cours.html', {'cours': cours})
-    
+ 
+@login_required(login_url='login')   
 def VideosPage(request):
     img=Videos.objects.all()
     return render(request,"videos.html",{"img":img})
@@ -111,6 +114,8 @@ def add_comment(request, videos_id):
 def IndexPage(request):
     return render (request,'index.html')
 
+
+@login_required(login_url='login')
 def ProjectsPage(request):
     imggg=Projects.objects.all()
     return render(request,"projects.html",{"imggg":imggg})
@@ -128,10 +133,41 @@ def Add_ProjectsPage(request):
      imggg=Projects.objects.all()
      return render(request,"add_projects.html",{"imggg":imggg,"forrrm":forrrm})
 
+
+@login_required(login_url='login')
 def QuizPage(request):
     return render (request,'quiz.html')
 
+def SearchBar(request):
+    courses = Courses.objects.all()  
+    if request.method == "POST":
+        searched = request.POST.get('searched')
+        if searched:
+            courses = Courses.objects.filter(title__icontains=searched)
+            return render(request, 'search_bar.html', {"searched": searched, "courses": courses})
+    return render(request, 'search_bar.html', {"courses": courses})  
+
+
+def SearchVd(request):
+    videos = Videos.objects.all()  
+    if request.method == "POST":
+        searchedd = request.POST.get('searchedd')
+        if searchedd:
+            videos = Videos.objects.filter(title__icontains=searchedd)
+            return render(request, 'search_vd.html', {"searchedd": searchedd, "videos": videos})
+    return render(request, 'search_vd.html', {"videos": videos})  
+
+
+def SearchProject(request):
+    projects = Projects.objects.all()  
+    if request.method == "POST":
+        searcheddd = request.POST.get('searcheddd')
+        if searcheddd:
+            projects = Projects.objects.filter(title__icontains=searcheddd)
+            return render(request, 'search_project.html', {"searched": searcheddd, "projects": projects})
+    return render(request, 'search_project.html', {"projects": projects})  
+
 def LogoutPage(request):
     logout(request)
-    return redirect('login')
+    return redirect('index')
 

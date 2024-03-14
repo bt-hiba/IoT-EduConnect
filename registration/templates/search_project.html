@@ -92,17 +92,15 @@
     </nav>
 
     <h1 class="display-4 text-center my-5">All Projects</h1>
-
-    <form class="container d-flex my-4" role="search" action="{% url 'search_project' %}" method="post">
-      {% csrf_token %}
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searcheddd">
-      <button type="submit" class="btn btn-primary ms-2">Search</button>
-  </form>
+    <form class="container d-flex my-4" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <a href="#" type="submit" class="btn btn-primary ms-2">Search</a>
+    </form>
   
 
     <div class="container">
         <div class="row">
-            {% for x in imggg %}
+            {% for x in projects %}
             <div class="col-lg-4 col-md-6">
                 <div class="card project-card">
                     <img src="{{ x.image.url }}" class="card-img-top project-card-img" alt="{{ x.title }}">
