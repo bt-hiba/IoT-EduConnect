@@ -10,6 +10,85 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+  body {
+    background-color: aliceblue;
+  }
+  .my-form {
+    max-width: 800px; /* Définir la largeur maximale du formulaire */
+    margin: auto; /* Centrer le formulaire horizontalement */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Espacement entre les champs du formulaire */
+}
+
+label {
+    font-weight: bold; /* Mettre en gras les étiquettes des champs */
+}
+
+input[type="text"], input[type="email"] {
+    width: 100%; /* Définir la largeur des champs de saisie sur 100% */
+    padding: 10px; /* Ajouter un espace intérieur aux champs de saisie */
+    border: 1px solid #ccc; /* Ajouter une bordure aux champs de saisie */
+    border-radius: 5px; /* Ajouter des coins arrondis aux champs de saisie */
+    box-sizing: border-box; /* Inclure le remplissage et la bordure dans la largeur et la hauteur du champ */
+}
+
+button[type="submit"] {
+    background-color: #007bff; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte du bouton */
+    border: none; /* Supprimer la bordure du bouton */
+    padding: 10px 20px; /* Ajouter un espace intérieur au bouton */
+    border-radius: 5px; /* Ajouter des coins arrondis au bouton */
+    cursor: pointer; /* Ajouter un curseur au survol du bouton */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Couleur de fond du bouton au survol */
+}
+
+  .form-control:focus {
+    box-shadow: none;
+    border-color: aliceblue;
+  }
+  
+  .profile-button {
+    background: aliceblue;
+    box-shadow: none;
+    border: none;
+  }
+  
+  .profile-button:hover {
+    background: aliceblue;
+  }
+  
+  .profile-button:focus {
+    background: #682773;
+    box-shadow: none;
+  }
+  
+  .profile-button:active {
+    background: #682773;
+    box-shadow: none;
+  }
+  
+  .back:hover {
+    color: #682773;
+    cursor: pointer;
+  }
+
+  /* Définir la largeur des colonnes pour les champs */
+  .left-column {
+    width: 50%; 
+  }
+
+  .right-column {
+    width: 50%; 
+  }
+</style>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary d-none d-lg-block">
@@ -39,8 +118,88 @@
             </div>
         </div>
     </nav>
+    <div class="container rounded bg-white mt-5">
+      <div class="row">
+          <div class="col-md-4 border-right">
+              <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                  <img class="rounded-circle mt-5" src="" width="90">
+                  <span class="font-weight-bold">Username</span>
+                  <span class="text-black-50">email</span>
+                  <span>country</span>
+              </div>
+          </div>
+          <div class="col-md-8">
+              <div class="p-3 py-5">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                      <div class="d-flex flex-row align-items-center back">
+                          <i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                      </div>
+                  </div>
+                  <form method="POST" class="my-form">
+                      {% csrf_token %}
+                      <div class="row">
+                          <div class="col-md-6 left-column">
+                              <div class="form-group">
+                                  <label for="id_username">Username:</label>
+                                  {{ foorm.username }}
+                              </div>
+                              <div class="form-group">
+                                  <label for="id_email">Email:</label>
+                                  {{ foorm.email }}
+                              </div>
+                              <div class="form-group">
+                                  <label for="id_last_name">Address:</label>
+                                  {{ foorm.username }}
+                              </div>
+                              <div class="form-group">
+                                  <label for="id_phone_number">School Name:</label>
+                                  {{ foorm.username }}
+                              </div>
+                          </div>
+                          <div class="col-md-6 right-column">
+                              <div class="form-group">
+                                  <label for="id_date_of_birth">Last Name:</label>
+                                  {{ foorm.username }}
+                              </div>
+                              <div class="form-group">
+                                  <label for="id_date_of_birth">Phone Number:</label>
+                                  {{ foorm.username }}
+                              </div>
+                              <div class="form-group">
+                                  <label for="id_date_of_birth">Country:</label>
+                                  {{ foorm.username }}
+                              </div>
+                              <div class="form-group">
+                                  <label for="id_student_id">Your Password:</label>
+                                  {{ foorm.username }}
+                              </div>
+                          </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Save Profile</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  
+  <!-- Votre code de pied de page -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+  <footer class="py-3 my-4">
+		<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+			<li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+			<li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+			<li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact</a></li>
+			<li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+			<li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+			<li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Feedback</a></li>
+		</ul>
+		<p class="text-center text-body-secondary">© 2023, BrainBunny</p>
+	</footer>
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 		crossorigin="anonymous"></script>
 

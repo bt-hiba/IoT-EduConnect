@@ -3,14 +3,22 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import VideosForm  , CoursesForm , ProjectsForm
-from .models import Videos , Comment , Courses , Projects
+from .forms import VideosForm  , CoursesForm , ProjectsForm , UserCreationForm
+from .models import Videos , Comment , Courses , Projects 
 
 # Create your views here.
 
 @login_required(login_url='login') # bach doz lay page akhra khasssek login first 
 def HomePage(request):
-   return render (request,'home.html')
+    if request.method == 'POST':
+        foorm = UserCreationForm(request.POST, instance=request.user)
+        if foorm.is_valid():
+            foorm.save()
+            # Redirigez l'utilisateur vers la page de profil après la mise à jour réussie.
+            return redirect('home')
+    else:
+        foorm = UserCreationForm(instance=request.user)
+    return render(request, 'home.html', {'foorm': foorm})
 
 @login_required(login_url='login') 
 def AdminPage(request):
