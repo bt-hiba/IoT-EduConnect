@@ -22,7 +22,12 @@ def HomePage(request):
 
 @login_required(login_url='login') 
 def AdminPage(request):
-    return render(request, 'admin.html')
+    users = User.objects.all()
+    imgg = Courses.objects.all()
+    img = Videos.objects.all()
+    imggg=Projects.objects.all()
+    return render(request, "admin.html", {"users": users, "imgg": imgg, "img": img, "imggg": imggg})
+
 
 
 def SignupPage(request):
@@ -51,15 +56,19 @@ def LoginPage(request):
         if user is not None:
             login(request,user)
             if user.is_staff:
-                # Rediriger l'administrateur vers la page admin
                 return redirect('admin')
             else:
-                # Rediriger l'utilisateur ordinaire vers la page home
                 return redirect('courses')
         else:
             return HttpResponse ("Username or Password is incorrect!!!")
 
     return render (request,'login.html')
+
+def delete_user(request, user_id):
+    user = User.objects.get(id=user_id)
+    user.delete()
+    return redirect('admin')
+ 
 
 @login_required(login_url='login')
 def CoursesPage(request):
@@ -79,17 +88,32 @@ def Add_CoursesPage(request):
      return render(request,"add_courses.html",{"imgg":imgg,"forrm":forrm})
  
  
+def delete_cours(request, courses_id):
+    cours = get_object_or_404(Courses, pk=courses_id)
+    cours.delete()
+    return redirect('admin')
+
+
+def EditCoursPage(request, course_id):
+    course = get_object_or_404(Courses, id=course_id)
+    if request.method == 'POST':
+        form = CoursesForm(request.POST, instance=course)
+        if form.is_valid():
+            form.save()
+            return redirect('admin')  
+    else:
+        form = CoursesForm(instance=course)
+    return render(request, 'admin_editcrs.html', {'form': form})
+ 
+ 
 def ReadPage(request, courses_id):
     cours = get_object_or_404(Courses, pk=courses_id)
-    print(cours.pdf.url)
     return render(request, 'read_cours.html', {'cours': cours})
  
 @login_required(login_url='login')   
 def VideosPage(request):
     img=Videos.objects.all()
     return render(request,"videos.html",{"img":img})
-    
-
 
 def Add_videoPage(request):
     if request.method == "POST":
@@ -103,7 +127,24 @@ def Add_videoPage(request):
     img=Videos.objects.all()
     return render(request,"add_video.html",{"img":img,"form":form})
    
-   
+def delete_video(request, videos_id):
+    video = get_object_or_404(Videos, pk=videos_id)
+    video.delete()
+    return redirect('admin')
+
+def EditVideoPage(request, video_id):
+    video = get_object_or_404(Videos, id=video_id)
+    if request.method == 'POST':
+        forrm = VideosForm(request.POST, instance=video)
+        if forrm.is_valid():
+            forrm.save()
+            return redirect('admin')  
+    else:
+        forrm = VideosForm(instance=video)
+    return render(request, 'admin_editvds.html', {'forrm': forrm})
+ 
+ 
+  
 def WatchPage(request, videos_id):
     video = get_object_or_404(Videos, pk=videos_id)
     comments = video.comments.all()
@@ -140,8 +181,24 @@ def Add_ProjectsPage(request):
        forrrm=ProjectsForm()
      imggg=Projects.objects.all()
      return render(request,"add_projects.html",{"imggg":imggg,"forrrm":forrrm})
-
-
+ 
+def delete_project(request, projects_id):
+    project = get_object_or_404(Projects, pk=projects_id)
+    project.delete()
+    return redirect('admin')
+  
+def EditProjectPage(request, project_id):
+    project = get_object_or_404(Projects, id=project_id)
+    if request.method == 'POST':
+        forrrm = ProjectsForm(request.POST, instance=project)
+        if forrrm.is_valid():
+            forrrm.save()
+            return redirect('admin')  
+    else:
+        forrrm = ProjectsForm(instance=project)
+    return render(request, 'admin_editpjs.html', {'forrrm': forrrm})
+ 
+ 
 @login_required(login_url='login')
 def QuizPage(request):
     return render (request,'quiz.html')
