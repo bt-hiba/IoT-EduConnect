@@ -29,6 +29,11 @@ urlpatterns = [
     path('login/',views.LoginPage,name='login'),
     path('home/',views.HomePage,name='home'),
     
+    path('admin_courses/',views.AdCoursesPage,name='admin_courses'),
+    path('admin_videos/',views.AdVideosPage,name='admin_videos'),
+    path('admin_projects/',views.AdProjectsPage,name='admin_projects'),
+    path('admin_quizes/',views.AdQuizesPage,name='admin_quizes'),
+    
     path('courses/',views.CoursesPage,name='courses'),
     path('add_courses/',views.Add_CoursesPage,name='add_courses'),
     path('read/<int:courses_id>/', views.ReadPage, name='read'),

@@ -8,51 +8,6 @@
    
    <link href="{% static 'css/admin.css'%}" rel="stylesheet">
 </head>
-<style>
-    .form-container {
-        max-width: 600px;
-        margin: 50px auto; /* Marge automatique en haut et en bas, et centrage horizontal */
-        padding: 9px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #f9f9f9;
-    }
-    
-    
-    .form-container input[type="text"],
-    .form-container input[type="email"],
-    .form-container textarea {
-        width: 100%;
-        padding: 10px;
-        margin: 6px 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-    
-    .form-container button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        width: 100%;
-    }
-    
-    .form-container button:hover {
-        background-color: #45a049;
-    }
-    
-    /* Style the success message */
-    .success-message {
-        margin-top: 20px;
-        font-weight: bold;
-        color: green;
-    }
-    
-</style>
 <body>
    <div class="sidebar" id="sidebar">
       <div class="logo">
@@ -124,20 +79,78 @@
       </header>
 
       <main>
-        <h1 class="display-4 text-center my-5"><center>Add Cours</h1>
-            <form action="." method="post" enctype="multipart/form-data" class="form-container">
+         <div class="cards">
+            <div class="single-card">
+                <div>
+                    <span>Courses</span>
+                    <h2>{{ total_courses }}</h2>
+                 </div>
+              </div>
+              <div class="single-card">
+                 <div>
+                    <span>Videos</span>
+                    <h2>{{ total_videos }}</h2>
+                 </div>
+              </div>
+              <div class="single-card">
+                 <div>
+                    <span>Projects</span>
+                    <h2>{{ total_projects }}</h2>
+                 </div>
+              </div>
+            <div class="single-card">
+               <div>
+                  <span>Quizes</span>
+                  <h2>18</h2>
+               </div>
+               
+            </div>
+         </div>
 
-                {% csrf_token %}
-                {{forrm.as_p}}
-                
-                <button type="submit" class="btn btn-lg btn-success">Upload</button>
-                </form>
-                
-                {% if objj %}
-                <h3>Succesfully uploaded : </h3>
-                {% endif %}
-            
 
+         <section class="attendance">
+            <div class="attendance-list">
+               <div class="card-header flex">
+                  <h3>All Courses</h3>
+                  <a href="{% url 'add_courses' %}" class="add-user-button">Add Cours <i class="uil uil-plus"></i></a>
+
+                  
+               </div>
+               <table class="table">
+               
+                    <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">pdf</th>
+                            <th scope="col">image</th>
+                            <th scope="col">Actions</th> 
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        {% for x in imgg %}
+                        <tr>
+                            <th scope="row">{{ x.id }}</th>
+                            <td>{{ x.title }}</td>
+                            <td>{{ x.description }}</td>
+                            <td>{{ x.pdf }}</td>
+                            <td><img src="{{ x.image.url }}" alt="{{ x.title }}" style="max-width: 100px; max-height: 100px;"></td>
+                            <td class="actions"> 
+                                    <a href="{% url 'edit_course' x.id %}">
+                                        <i class="uil uil-edit edit-icon"></i> <!-- Icône d'édition -->
+                                    </a>
+                                    <a href="{% url 'delete_cours' x.id %}">
+                                        <i class="uil uil-trash-alt delete-icon"></i> <!-- Icône de suppression -->
+                                    </a>
+                                </td>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+               </table>
+            </div>
+            </section>
       </main>
    </div>
 

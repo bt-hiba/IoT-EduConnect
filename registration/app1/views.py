@@ -22,11 +22,43 @@ def HomePage(request):
 
 @login_required(login_url='login') 
 def AdminPage(request):
+    user = request.user 
+    total_courses = Courses.objects.count()
+    total_videos = Videos.objects.count()
+    total_projects = Projects.objects.count()
     users = User.objects.all()
+    return render(request, "admin.html", {'user': user, "users": users,'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects})
+
+def AdCoursesPage(request):
+    user = request.user 
+    total_courses = Courses.objects.count()
+    total_videos = Videos.objects.count()
+    total_projects = Projects.objects.count()
     imgg = Courses.objects.all()
+    return render(request, "admin_courses.html", {'user': user,"imgg": imgg, 'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects})
+
+def AdVideosPage(request):
+    user = request.user 
+    total_courses = Courses.objects.count()
+    total_videos = Videos.objects.count()
+    total_projects = Projects.objects.count()
     img = Videos.objects.all()
+    return render(request, "admin_videos.html", {'user': user,"img": img,'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects})
+
+def AdProjectsPage(request):
+    user = request.user 
+    total_courses = Courses.objects.count()
+    total_videos = Videos.objects.count()
+    total_projects = Projects.objects.count()
     imggg=Projects.objects.all()
-    return render(request, "admin.html", {"users": users, "imgg": imgg, "img": img, "imggg": imggg})
+    return render(request, "admin_projects.html", { 'user': user,"imggg": imggg, 'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects})
+
+def AdQuizesPage(request):
+    user = request.user 
+    total_courses = Courses.objects.count()
+    total_videos = Videos.objects.count()
+    total_projects = Projects.objects.count()
+    return render (request,'admin_quizes.html', {'user': user,'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects})
 
 
 
@@ -91,7 +123,7 @@ def Add_CoursesPage(request):
 def delete_cours(request, courses_id):
     cours = get_object_or_404(Courses, pk=courses_id)
     cours.delete()
-    return redirect('admin')
+    return redirect('admin_courses')
 
 
 def EditCoursPage(request, course_id):
@@ -100,7 +132,7 @@ def EditCoursPage(request, course_id):
         form = CoursesForm(request.POST, instance=course)
         if form.is_valid():
             form.save()
-            return redirect('admin')  
+            return redirect('admin_courses')  
     else:
         form = CoursesForm(instance=course)
     return render(request, 'admin_editcrs.html', {'form': form})
@@ -130,7 +162,7 @@ def Add_videoPage(request):
 def delete_video(request, videos_id):
     video = get_object_or_404(Videos, pk=videos_id)
     video.delete()
-    return redirect('admin')
+    return redirect('admin_videos')
 
 def EditVideoPage(request, video_id):
     video = get_object_or_404(Videos, id=video_id)
@@ -138,7 +170,7 @@ def EditVideoPage(request, video_id):
         forrm = VideosForm(request.POST, instance=video)
         if forrm.is_valid():
             forrm.save()
-            return redirect('admin')  
+            return redirect('admin_videos')  
     else:
         forrm = VideosForm(instance=video)
     return render(request, 'admin_editvds.html', {'forrm': forrm})
@@ -185,7 +217,7 @@ def Add_ProjectsPage(request):
 def delete_project(request, projects_id):
     project = get_object_or_404(Projects, pk=projects_id)
     project.delete()
-    return redirect('admin')
+    return redirect('admin_projects')
   
 def EditProjectPage(request, project_id):
     project = get_object_or_404(Projects, id=project_id)
@@ -193,7 +225,7 @@ def EditProjectPage(request, project_id):
         forrrm = ProjectsForm(request.POST, instance=project)
         if forrrm.is_valid():
             forrrm.save()
-            return redirect('admin')  
+            return redirect('admin_projects')  
     else:
         forrrm = ProjectsForm(instance=project)
     return render(request, 'admin_editpjs.html', {'forrrm': forrrm})
