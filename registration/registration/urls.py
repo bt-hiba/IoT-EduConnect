@@ -28,6 +28,7 @@ urlpatterns = [
     path('signup',views.SignupPage,name='signup'),
     path('login/',views.LoginPage,name='login'),
     path('home/',views.HomePage,name='home'),
+    path('header/',views.HeaderPage,name='header'),
     
     path('admin_courses/',views.AdCoursesPage,name='admin_courses'),
     path('admin_videos/',views.AdVideosPage,name='admin_videos'),

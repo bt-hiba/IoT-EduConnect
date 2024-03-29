@@ -195,6 +195,8 @@ def add_comment(request, videos_id):
 def IndexPage(request):
     return render (request,'index.html')
 
+def HeaderPage(request):
+    return render (request,'header.html')
 
 @login_required(login_url='login')
 def ProjectsPage(request):

@@ -1,178 +1,72 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <title>IotMasterClass</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>IMC</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
   <!-- Favicons -->
   <link href="{% static 'assets/img/favicon.png'%}" rel="icon">
   <link href="{% static 'assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
   <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
   <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
   <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet">
   <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{% static 'css/style.css'%}" rel="stylesheet">
-    <!-- Favicons -->
-<link href="{% static 'assets/img/favicon.png'%}" rel="icon">
-<link href="{% static 'aassets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+  <link href="{% static 'assets/css/style.css'%}" rel="stylesheet">
+  <link href="{% static 'assetsss/css/style.css'%}" rel="stylesheet">
 
+</head>
 
-<!-- Vendor CSS Files -->
-<link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
-<link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
-<link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
-<link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
-<link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+<body>
 
-   
-    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css'%}">
-    <link rel="stylesheet" href="{% static 'fonts/brand/style.css'%}">
-    <link href="{% static 'assets/img/favicon.png'%}" rel="icon">
-    <link href="{% static 'assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
-  
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css'%}">
-    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css'%}">
-    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}">
-    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css'%}">
-    <link rel="stylesheet" href="{% static 'css/aos.css'%}">
+ <!-- ======= Header ======= -->
+ <header id="header" class="fixed-top ">
+  <div class="container d-flex align-items-center justify-content-between">
 
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <h1 class="logo"><a href="{% url 'index' %}">IMC</a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-  </head>
-
-  <body>
-
-    
-    <div class="site-wrap" id="home-section">
-
-      <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-          <div class="site-mobile-menu-close mt-3">
-            <span class="icon-close2 js-menu-toggle"></span>
-          </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-      </div>
-
-      <header class="site-navbar light site-navbar-target" role="banner">
-
-        <div class="container">
-          <div class="row align-items-center position-relative">
-
-            <div class="col-3">
-              <div class="site-logo">
-                <a href="index.html"><strong>IMC</strong></a>
-              </div>
-            </div>
-
-            <div class="col-9  text-right">
-              
-              <span class="d-inline-block d-lg-none"><a href="#" class=" site-menu-toggle js-menu-toggle py-5 "><span class="icon-menu h3 text-black"></span></a></span>
-
-              <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
-                <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                  <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                  <li><a href="tutorials.html" class="nav-link">Tutorials</a></li>
-                  <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
-                  <li><a href="blog.html" class="nav-link">Blog</a></li>
-                  <li><a href="nav-link scrollto" class="#about">About</a></li>
-                  <li><a href="{% url 'login' %}" class="#about">login</a></li>
-                  <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-              </nav>
-            </div>
-
-            
-          </div>
-        </div>
-
-      </header>
-
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+        <li><a class="nav-link scrollto" href="#about">About</a></li>
+        <li><a class="nav-link scrollto" href="#services">services</a></li>
+        <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
+        <li><a class="nav-link scrollto" href="#testimonials">Testimonials</a></li>
       
-      <div class="site-section-cover overlay" style="background-image: url('{% static 'images/hero_bg.jpg' %}');">
+       
         
-        <div class="container">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-lg-10 text-center">
-              <h1>Apprendre <strong> aujourd'hui,</strong> diriger <strong>demain</strong></h1>
-            </div>
-          </div>
-        </div>
-      </div>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
 
-      <div class="site-section bg-light pb-0">
-        <div class="container">
-          <div class="row align-items-stretch overlap">
-            <div class="col-lg-8">
-              <div class="box h-100">
-                <div class="d-flex align-items-center">
-                  <div class="img"><img src="{% static 'images/features2.webp'%}" class="img-fluid" alt="Image"></div>
-                  <div class="text">
-                    <a href="#" class="category">Tutorial</a>
-                    <h3><a href="#">Learning Internet Of Things</a></h3>
-                    <p> Votre portail dédié à l'apprentissage passionnant de l'Internet des Objets (IoT). Chez IotMasterClass, nous sommes animés par la volonté de partager notre expertise et de guider votre exploration du vaste univers de l'IoT.</p>
-                    <p class="mb-0">
-                      <span class="brand-react h5"></span>
-                      <span class="brand-javascript h5"></span>
-                    </p>
-                    <p class="meta">
-                      <span class="mr-2 mb-2">1hr 24m</span>
-                      <span class="mr-2 mb-2">Advanced</span>
-                      <span class="mr-2 mb-2">Janvier 09, 2024</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="box small h-100">
-                <div class="d-flex align-items-center mb-2">
-                  <div class="img"><img src="{% static 'images/img_2.jpg'%}" class="img-fluid" alt="Image"></div>
-                  <div class="text">
-                    <a href="#" class="category">Tutoriel</a>
-                    <h3><a href="#">Cours Théoriques d'Iot</a></h3>
-                  </div>
-                </div>
-                <div class="d-flex align-items-center mb-2">
-                  <div class="img"><img src="{% static 'images/img_3.jpg'%}" class="img-fluid" alt="Image"></div>
-                  <div class="text">
-                    <a href="#" class="category">Tutoriel</a>
-                    <h3><a href="#">Apprentissage des matériels IoT </a></h3>
-                  </div>
-                </div>
-                <div class="d-flex align-items-center">
-                  <div class="img"><img src="{% static 'images/img_4.jpg'%}" class="img-fluid" alt="Image"></div>
-                  <div class="text">
-                    <a href="#" class="category">Tutoriel</a>
-                    <h3><a href="#">Projets IoT avec Scratch </a></h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
+  </div>
+</header><!-- End Header -->
 
-
-
-
-  
-        
-  
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <h3>Welcome to <strong>IotMasterClass</strong></h3>
+      <h1>Learn today, lead tomorrow.</h1>
+      <h2></h2>
+      <a href="{% url 'login' %}" class="btn-get-started scrollto">Get Started</a>
+    </div>
+  </section><!-- End Hero -->
 
   <main id="main">
 
@@ -181,16 +75,16 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>What We Do</h2>
-          <p>We are here to help people learn IoT, present IoT courses, and undertake mini-projects on IoT.</p>
+          <h2>What we do</h2>
+          <p> We are here to help people learn about IoT, offer IoT courses, and create mini-projects related to IoT.</p>
         </div>
 
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-check-double"></i></div>
-              <h4><a href="">IoT Hardware Learning</a></h4>
-              <p> IoT Hardware Learning provides an immersion in the manipulation of physical components.</p>
+              <h4><a href="">IoT videos </a></h4>
+              <p> IoT videos showcase the latest trends and innovations in the field of the Internet of Things.</p>
             </div>
           </div>
 
@@ -198,18 +92,18 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4><a href="">Theoretical IoT Courses</a></h4>
-              <p>Theoretical IoT courses delve into the concepts and architectures of IoT.</p>
+              <p> Theoretical courses on IoT explore IoT concepts and architectures.</p>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="bx bi-journal-richtext"></i></div>
-              <h4><a href="">IoT Projects with Scratch</a></h4>
+              <h4><a href="">IoT projects with Scratch</a></h4>
               <p>Undertake exciting IoT projects with Scratch.</p>
             </div>
           </div>
-
+          
         </div>
 
       </div>
@@ -226,11 +120,10 @@
           <div class="col-lg-6 pt-4 pt-lg-0">
             <h3>About </h3>
             <p>
-              Welcome to IoTMasterclass, your gateway to the fascinating world of IoT. Explore comprehensive learning resources, interactive courses, and hands-on projects to unlock the potential of connected technologies. Begin your IoT journey with us today!
-            </p>
+              Welcome to IoTMasterclass, your gateway to the fascinating world of IoT. Explore comprehensive learning resources, interactive courses, and practical projects to unleash the potential of connected technologies. Start your IoT journey with us today!</p>
             <ul>
-              <li><i class="bx bx-check-double"></i> Practical Projects for Mastery.</li>
-              <li><i class="bx bx-check-double"></i> Discover the Essence of IoT.</li>
+              <li><i class="bx bx-check-double"></i> Practical projects for mastery.</li>
+              <li><i class="bx bx-check-double"></i> Discover the essence of IoT.</li>
             </ul>
             
             
@@ -252,33 +145,33 @@
 
           <div class="col-lg-3 col-6">
             <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Happy Clients</p>
+              <i class="bi bi-kanban"></i>
+              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
+              <p>cours</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-6">
             <div class="count-box">
               <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1" class="purecounter"></span>
               <p>Projects</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-6 mt-5 mt-lg-0">
             <div class="count-box">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
+              <i class="bi bi-camera-video-fill"></i>
+              <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="purecounter"></span>
+              <p>videos</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-6 mt-5 mt-lg-0">
             <div class="count-box">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hard Workers</p>
+              <i class="bi bi-graph-up-arrow"></i>
+              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Quiz</p>
             </div>
           </div>
 
@@ -372,8 +265,8 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
             <div class="portfolio-wrap">
               <figure>
-                <img src="{% static 'images/iot4.jpg'%}" class="img-fluid" alt="">
-                <a href="{% static 'images/iot4.jpg'%}" data-gallery="portfolioGallery" class="link-preview portfolio-lightbox" title="Preview"><i class="bx bx-plus"></i></a>
+                <img src="{% static 'images/iot-4.webp' %}" class="img-fluid" alt="">
+                <a href="{% static 'images/iot-4.webp' %}" data-gallery="portfolioGallery" class="link-preview portfolio-lightbox" title="Preview"><i class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
@@ -387,8 +280,8 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
             <div class="portfolio-wrap">
               <figure>
-                <img src="{% static 'images/materiel3.jpg'%}" class="img-fluid" alt="">
-                <a href="{% static 'images/materiel3.jpg'%}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
+                <img src="{% static 'images/materiel3.jpg' %}" class="img-fluid" alt="">
+                <a href="{% static 'images/materiel3.jpg' %}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
@@ -402,8 +295,8 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
             <div class="portfolio-wrap">
               <figure>
-                <img src="{% static 'images/iot2.jpg'%}" class="img-fluid" alt="">
-                <a href="{% static 'images/iot2.jpg'%}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
+                <img src="{% static 'images/iot-2.jpg' %}" class="img-fluid" alt="">
+                <a href="{% static 'images/iot-2.jpg' %}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
@@ -417,8 +310,8 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
             <div class="portfolio-wrap">
               <figure>
-                <img src="{% static 'images/projet2.png'%}" class="img-fluid" alt="">
-                <a href="{% static 'images/projet2.png'%}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
+                <img src="{% static 'images/prj1.avif' %}" class="img-fluid" alt="">
+                <a href="{% static 'images/prj1.avif' %}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
@@ -432,8 +325,8 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
             <div class="portfolio-wrap">
               <figure>
-                <img src="{% static 'images/materiel2.jpg'%}" class="img-fluid" alt="">
-                <a href="{% static 'images/materiel2.jpg'%}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
+                <img src="{% static 'images/materiel2.jpg' %}" class="img-fluid" alt="">
+                <a href="{% static 'images/materiel2.jpg' %}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
@@ -447,8 +340,8 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp" data-wow-delay="0.2s">
             <div class="portfolio-wrap">
               <figure>
-                <img src="{% static 'images/iot3.jpg'%}" class="img-fluid" alt="">
-                <a href="{% static 'images/iot3.jpg'%}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
+                <img src="{% static 'images/iot-1.webp' %}" class="img-fluid" alt="">
+                <a href="{% static 'images/iot-1.webp' %}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
@@ -462,8 +355,8 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp">
             <div class="portfolio-wrap">
               <figure>
-                <img src="{% static 'images/projet1 .jpg'%}" class="img-fluid" alt="">
-                <a href="{% static 'images/projet1 .jpg'%}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
+                <img src="{% static 'images/prj2.jpg' %}" class="img-fluid" alt="">
+                <a href="{% static 'images/prj2.jpg' %}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
@@ -477,8 +370,8 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-card wow fadeInUp" data-wow-delay="0.1s">
             <div class="portfolio-wrap">
               <figure>
-                <img src="{% static 'images/projet3.png'%}" class="img-fluid" alt="">
-                <a href="{% static 'images/projet3.png'%}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
+                <img src="{% static 'images/prj3.webp' %}" class="img-fluid" alt="">
+                <a href="{% static 'images/projet3.png' %}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
@@ -492,8 +385,8 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.2s">
             <div class="portfolio-wrap">
               <figure>
-                <img src="{% static 'images/materiel.jpg'%}" class="img-fluid" alt="">
-                <a href="{% static 'images/materiel.jpg'%}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
+                <img src="{% static 'images/materiel.jpg' %}" class="img-fluid" alt="">
+                <a href="{% static 'images/materiel.jpg' %}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
               </figure>
 
@@ -528,7 +421,7 @@
                   The emphasis on real-world applications sets IMC apart. The hands-on projects provided a practical understanding of IoT . 
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
-                <img src="{% static 'assets/img/testimonials/testimonials-1.jpg'%}" class="testimonial-img" alt="">
+                <img src="{% static 'assets/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
                 <h3>Fouad</h3>
                 <h4>Student</h4>
               </div>
@@ -541,7 +434,7 @@
                   What I love about IMC is its user-friendly interface. Navigating through the courses is a breeze .
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
-                <img src="{% static 'assets/img/testimonials/testimonials-2.jpg'%}" class="testimonial-img" alt="">
+                <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
                 <h3>Sara Wilsson</h3>
                 <h4>Student</h4>
               </div>
@@ -554,7 +447,7 @@
                   Enrolling in IMC was a game-changer for me! The courses are well-structured . 
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
-                <img src="{% static 'assets/img/testimonials/testimonials-3.jpg'%}" class="testimonial-img" alt="">
+                <img src="{% static 'assets/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
                 <h3>jihan</h3>
                 <h4>Student</h4>
               </div>
@@ -566,7 +459,7 @@
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                   I owe a significant part of my success in the IoT industry to IMC. <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
-                <img src="{% static 'assets/img/testimonials/testimonials-4.jpg'%}" class="testimonial-img" alt="">
+                <img src="{% static 'assets/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
                 <h3>Amir louza</h3>
                 <h4>Student</h4>
               </div>
@@ -578,7 +471,7 @@
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                   Transitioning to IoT seemed like a daunting task, but IMC made it seamless .<i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
-                <img src="{% static 'assets/img/testimonials/testimonials-5.jpg'%}" class="testimonial-img" alt="">
+                <img src="{% static 'assets/img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
                 <h3>Faysal ahmed</h3>
                 <h4>Student </h4>
               </div>
@@ -592,75 +485,7 @@
     </section><!-- End Testimonials Section -->
 
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit eius consequatur ex aliquid fuga</p>
-        </div>
-
-        <div class="row mt-5 justify-content-center">
-
-          <div class="col-lg-10">
-
-            <div class="info-wrap">
-              <div class="row">
-                <div class="col-lg-4 info">
-                  <i class="bi bi-geo-alt"></i>
-                  <h4>Location:</h4>
-                  <p>A108 Adam Street<br>New York, NY 535022</p>
-                </div>
-
-                <div class="col-lg-4 info mt-4 mt-lg-0">
-                  <i class="bi bi-envelope"></i>
-                  <h4>Email:</h4>
-                  <p>info@example.com<br>contact@example.com</p>
-                </div>
-
-                <div class="col-lg-4 info mt-4 mt-lg-0">
-                  <i class="bi bi-phone"></i>
-                  <h4>Call:</h4>
-                  <p>+1 5589 55488 51<br>+1 5589 22475 14</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="row mt-5 justify-content-center">
-          <div class="col-lg-10">
-            <form action="" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
+    
 
   </main><!-- End #main -->
 
@@ -689,7 +514,6 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#about">À Propos</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Cours</a></li>
               
-              <li><i class="bx bx-chevron-right"></i> <a href="#">contact</a></li>
             </ul>
           </div>
 
@@ -759,7 +583,20 @@
     <script src="{% static 'js/bootstrap-datepicker.min.js'%}"></script>
     <script src="{% static 'js/aos.js'%}"></script>
 
+    <script src="{% static 'js/main.js'%}"></script>
 
-  </body>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js'%}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js'%}"></script>
+
+</body>
 
 </html>

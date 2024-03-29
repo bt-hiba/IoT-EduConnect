@@ -1,13 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
+    <meta charset="utf-8">
     <title>Login Page</title>
- 
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <!--Stylesheet-->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assetss/vendorr/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'assetss/vendorr/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+    <link href="{% static 'assetss/vendorr/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+    <link href="{% static 'assetss/vendorr/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+    <link href="{% static 'assetss/vendorr/remixicon/remixicon.css'%}" rel="stylesheet">
+    <link href="{% static 'assetss/vendorr/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css'%}" rel="stylesheet">
+    <link href="{% static 'assetss/css/style.css'%}" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,12 +29,12 @@
             align-items: center;
             height: 100vh;
         }
-        .container {
+        .container-login {
             background-color: #ffffff;
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            width: 600px;
         }
         h3 {
             text-align: center;
@@ -52,7 +62,7 @@
         }
         button[type="submit"] {
             width: 100%;
-            background-color:  #0056b3;
+            background-color:  #191970;
             color: #ffffff;
             border: none;
             padding: 15px;
@@ -62,35 +72,49 @@
             transition: background-color 0.3s ease;
         }
         button[type="submit"]:hover {
-            background-color: #ff7f50;
-        }
-        .signup-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .signup-link a {
-            color: #ff7f50;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .signup-link a:hover {
-            color: #ff6347;
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <form method="post">
+
+  <!-- Header -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a href="{% url 'index' %}">IMC</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'index' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'signup' %}">signup</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+  
+  <!-- Main Content -->
+  <main>
+    <div class="container-login">
+      <form method="post">
         <h3>Login Here</h3>
-        {% csrf_token %} 
+        {% csrf_token %}
         <label for="username">Username</label>
         <input type="text" placeholder="Enter Username" id="username" name="username">
-
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password" name="pass">
-
         <button type="submit">Log In</button>
-         
-        <a href="{% url 'signup' %}" >Create an account</a>
-    </form>
+      </form>
+    </div>
+  </main>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js'%}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
 </body>
 </html>

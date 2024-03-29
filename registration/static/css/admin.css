@@ -1,7 +1,7 @@
  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
 
 :root {
-  --main-color: #006eff;
+  --main-color: #61b6d8;
   --text-grey: #8390a2;
   --text-white: #fff;
   --shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -108,7 +108,28 @@ header h2{
   top: 50%;
   transform: translateY(-50%);
 }
+.profile-icon {
+    position: relative;
+    cursor: pointer;
+}
 
+.profile-info {
+    display: none;
+    width: 200px;
+    position: absolute;
+    top: 30px;
+    right: -10px;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.profile-info.show {
+    display: block;
+}
+.profile-icon-large {
+    font-size: 40px; /* Taille de l'icône agrandie */
+}
 img{
   cursor: pointer;
   border-radius: 30px;
@@ -156,16 +177,20 @@ main{
 
 .single-card:nth-child(1) span{
   color: royalblue;
+  font-size: 20px;
 }
 
 .single-card:nth-child(2) span{
   color: limegreen;
+  font-size: 20px;
 }
 .single-card:nth-child(3) span{
   color: teal;
+  font-size: 20px;
 }
 .single-card:nth-child(4) span{
   color: orange;
+  font-size: 20px;
 }
 
 .single-card:hover{
@@ -196,19 +221,12 @@ main{
   opacity: .5;
 }
 
-.wrapper{
-  margin-top: 50px;
-  flex-wrap: wrap;
-}
 
-.projects{
-  flex-basis: 60%;
-}
-
-.card-header{
-  padding: 15px 20px;
-  border-bottom: 0.5px solid var(--text-grey);
-}
+  
+  .card-header{
+    padding: 15px 20px;
+    border-bottom: 0.5px solid var(--text-grey);
+  }
 
 button{
   border: none;
@@ -223,26 +241,86 @@ button{
 button i{
   margin-left: 5px;
 }
+.add-user-button {
+    display: inline-block; /* Assure que le lien occupe la même largeur que le bouton */
+    padding: 8px 12px; /* Ajustez le rembourrage selon vos besoins */
+    background-color: var(--main-color); /* Couleur de fond */
+    color: var(--text-white); /* Couleur du texte */
+    border: none; /* Supprime la bordure */
+    border-radius: 5px; /* Bordure arrondie */
+    text-decoration: none; /* Supprime le soulignement du lien */
+    cursor: pointer; /* Curseur de souris */
+  }
+  
+  .add-user-button i {
+    margin-left: 5px; /* Espace entre le texte et l'icône */
+  }
+  
 
-table{
-  width: 160%;
-  height: 100%;
-  padding: 15px 20px;
-  font-size: 15px;
-  border-collapse: collapse;
+.attendance{
+    margin-top: 20px;
+    text-transform: capitalize;
+  }
+  .attendance-list{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+  .table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 15px;
+    min-width: 100%;
+    overflow: hidden;
+    border-radius: 5px 5px 0 0;
+  }
+  table thead tr{
+    color: #fff;
+    background:rgb(104, 174, 235);
+    text-align: left;
+    font-weight: bold;
+  }
+  .table th,
+  .table td{
+    padding: 12px 15px;
+  }
+  .table tbody tr{
+    border-bottom: 1px solid #ddd;
+  }
+  .table tbody tr:nth-of-type(odd){
+    background: #f3f3f3;
+  }
+  .table tbody tr.active{
+    font-weight: bold;
+    color: rgb(105, 182, 250);
+  }
+  .table tbody tr:last-of-type{
+    border-bottom: 2px solid rgb(105, 182, 250);
+  }
+  .table button{
+    padding: 6px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid rgb(105, 182, 250);
+  }
+  .table button:hover{
+    background: rgb(105, 182, 250);
+    color: #fff;
+    transition: 0.5rem;
+  }
+  .actions a i {
+    font-size: 24px; /* Ajustez la taille de l'icône selon vos préférences */
+}
+.actions a .edit-icon {
+    color: green; /* Couleur verte pour l'icône d'édition */
 }
 
-thead{
-  border-bottom: .5px solid var(--text-grey);
-}
-
-tr,td,th{
-  padding: 8px 20px;
-}
-
-thead :is(tr,td,th){
-  padding: 5px 20px;
-  font-weight: 600;
+.actions a .delete-icon {
+    color: red; /* Couleur rouge pour l'icône de suppression */
 }
 
 @media only screen and (max-width: 979px){
@@ -267,18 +345,7 @@ thead :is(tr,td,th){
 }
 
 @media only screen and (max-width: 530px){
-  .wrapper{
-    margin-top: 0;
-  }
-  table{
-    font-size: 12px;
-  }
-  thead:is(tr,td,th){
-    padding: 8px;
-  }
-  tr,td,th{
-    padding: 8px;
-  }
+ 
   .card-header{
     padding: 10px;
   }
