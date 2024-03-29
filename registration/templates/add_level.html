@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Video</title>
+
+<style>
+    
+ .header {
+    background-color: #f0f0f0; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    padding: 10px 20px; /* Espacement intérieur */
+  }
+  .header .flex {
+      display: flex;
+      justify-content: space-between; /* Répartir les éléments horizontalement */
+      align-items: center;
+  }
+  
+  .header .flex .right-align {
+      margin-left: auto; /* Aligner à droite */
+      margin-left: 10px; /* Réduire l'espace entre les liens */
+  }
+  
+  
+  .header .logo {
+    font-size: 24px; /* Taille de la police pour le logo */
+    text-decoration: none; /* Supprimer le soulignement des liens */
+  }
+  
+  .header .flex a {
+    color: #000; /* Couleur du texte des liens */
+    margin-left: 30px; /* Marge à gauche pour les éléments suivants du logo */
+    text-decoration: none; /* Supprimer le soulignement des liens */
+  }
+  
+  .header .flex a:hover {
+    color: #ccc; /* Couleur du texte des liens au survol */
+  }
+  .form-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.form-container button {
+    margin-top: 10px;
+}
+
+.success-message {
+    margin-top: 20px;
+}
+
+</style>  
+<body>
+    <header class="header">
+   
+        <section class="flex">
+      
+           <a href="{% url 'home' %}" class="logo">Educa.</a>
+           <a href="{% url 'home' %}"><i></i>home</a>
+           <a href="{% url 'courses' %}"><i></i>courses</a>
+           <a href="{% url 'videos' %}"><i></i>videos</a>
+           <a href="{% url 'projects' %}"><i></i>projects</a>
+           <a href="{% url 'all_quiz' %}"><i></i>all_quiz</a>
+           <a href="{% url 'logout' %}"><i></i>logout</a>
+      
+        </section>
+      
+      </header> 
+    <div class="container">
+        <form action="." method="post" enctype="multipart/form-data" class="form-container">
+
+            {% csrf_token %}
+            {{forrrrrm.as_p}}
+            
+            <button type="submit" class="btn btn-lg btn-success">Upload</button>
+            </form>
+            
+            {% if objjjjj %}
+            <h3>Succesfully uploaded </h3>
+            {% endif %}
+
+    </div>
+
+</body>
+</html>

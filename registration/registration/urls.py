@@ -55,7 +55,12 @@ urlpatterns = [
     path('projects/',views.ProjectsPage,name='projects'),
     path('add_projects/',views.Add_ProjectsPage,name='add_projects'),
     
+    path('add_quiz/',views.AddQuizPage,name='add_quiz'),
+    path('add_level/',views.Add_LevelPage,name='add_level'),
+    path('all_quiz/',views.LevelPage,name='all_quiz'),
     path('quiz/',views.QuizPage,name='quiz'),
+    path('start_quiz/<str:level_name>/', views.start_quiz, name='start_quiz'),
+    
     
     path('search_bar/',views.SearchBar,name='search_bar'),
     path('search_vd/',views.SearchVd,name='search_vd'),

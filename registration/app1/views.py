@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import VideosForm  , CoursesForm , ProjectsForm , UserCreationForm
-from .models import Videos , Comment , Courses , Projects 
+from .forms import VideosForm  , CoursesForm , ProjectsForm , UserCreationForm , QuizLevelForm , QuestionsForm 
+from .models import Videos , Comment , Courses , Projects , QuizLevel , Questions 
 
 # Create your views here.
 
@@ -246,6 +246,45 @@ def SearchBar(request):
             return render(request, 'search_bar.html', {"searched": searched, "courses": courses})
     return render(request, 'search_bar.html', {"courses": courses})  
 
+def quiz(request):
+    questions = Questions.objects.all()
+    score = None
+
+    if request.method == 'POST':
+        form = QuizForm(request.POST, questions=questions)
+        if form.is_valid():
+            score = form.calculate_score()
+    else:
+        form = QuizForm(questions=questions)
+
+    return render(request, 'quiz.html', {'form': form, 'score': score})
+
+
+def start_quiz(request, level_name):
+    # Récupérer le niveau de quiz correspondant
+    level = QuizLevel.objects.get(level_name=level_name)
+
+    # Récupérer les questions associées à ce niveau de quiz
+    questions = Questions.objects.filter(level=level)
+
+    return render(request, 'start_quiz.html', {'level': level, 'questions': questions})
+
+def LevelPage(request):
+    imggggg=QuizLevel.objects.all()
+    return render(request,"all_quiz.html",{"imggggg":imggggg})
+
+def Add_LevelPage(request):
+     if request.method == "POST":
+       forrrrrm=QuizLevelForm(data=request.POST,files=request.FILES)
+       if forrrrrm.is_valid():
+          forrrrrm.save()
+          objjjjj=forrrrrm.instance
+          return render(request,"add_level.html",{"objjjjj":objjjjj})
+     else:
+       forrrrrm=QuizLevelForm ()
+     imggggg=QuizLevel.objects.all()
+     return render(request,"add_level.html",{"imggggg":imggggg,"forrrrrm":forrrrrm})
+
 
 def SearchVd(request):
     videos = Videos.objects.all()  
@@ -265,6 +304,18 @@ def SearchProject(request):
             projects = Projects.objects.filter(title__icontains=searcheddd)
             return render(request, 'search_project.html', {"searched": searcheddd, "projects": projects})
     return render(request, 'search_project.html', {"projects": projects})  
+
+def AddQuizPage(request):
+     if request.method == "POST":
+       forrrrm=QuestionsForm(data=request.POST,files=request.FILES)
+       if forrrrm.is_valid():
+          forrrrm.save()
+          objjjj=forrrrm.instance
+          return render(request,"add_quiz.html",{"objjjj":objjjj})
+     else:
+       forrrrm=QuestionsForm()
+     imgggg=Questions.objects.all()
+     return render(request,"add_quiz.html",{"imgggg":imgggg,"forrrrm":forrrrm})
 
 def LogoutPage(request):
     logout(request)

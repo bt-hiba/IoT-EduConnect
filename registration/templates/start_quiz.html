@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - BrainBunny</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>Start Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary d-none d-lg-block">
         <div class="container">
             <a class="navbar-brand" href="{% url 'index' %}">IMC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -39,51 +33,37 @@
         </div>
     </nav>
 
-    <h1 class="display-4 text-center my-5">Quiz</h1>
-
+    <h1 class="display-4 text-center my-5">Quiz - {{ level.level_name }}</h1>
+    
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                {% for question in imgggg %}
+        <form method="post">
+            {% csrf_token %}
+            {% for question in questions %}
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
                         <h4>{{ question.question_text }}</h4>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="choice{{ forloop.counter }}"
-                                value="{{ question.choice1 }}">
+                            <input class="form-check-input" type="radio" name="question{{ question.id }}" id="choice1" value="{{ question.choice1 }}">
                             <label class="form-check-label" for="choice1">{{ question.choice1 }}</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="choice{{ forloop.counter }}"
-                                value="{{ question.choice2 }}">
+                            <input class="form-check-input" type="radio" name="question{{ question.id }}" id="choice2" value="{{ question.choice2 }}">
                             <label class="form-check-label" for="choice2">{{ question.choice2 }}</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="choice{{ forloop.counter }}"
-                                value="{{ question.choice3 }}">
+                            <input class="form-check-input" type="radio" name="question{{ question.id }}" id="choice3" value="{{ question.choice3 }}">
                             <label class="form-check-label" for="choice3">{{ question.choice3 }}</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="choice{{ forloop.counter }}"
-                                value="{{ question.choice4 }}">
+                            <input class="form-check-input" type="radio" name="question{{ question.id }}" id="choice4" value="{{ question.choice4 }}">
                             <label class="form-check-label" for="choice4">{{ question.choice4 }}</label>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button class="btn btn-primary mt-3" id="finishBtn">Finish</button>
-                </form>
-                {% if score is not None %}
-                    <p>Your score: {{ score }}</p>
-                {% endif %}
-                
-            </div>
-        </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary mt-3">Finish</button>
+        </form>
     </div>
-    
 
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
@@ -97,11 +77,6 @@
         <p class="text-center text-body-secondary">©️ 2023, BrainBunny</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
-    </script>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
-
 </html>

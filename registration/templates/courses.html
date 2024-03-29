@@ -1,161 +1,186 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Courses </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <head>
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+      <title>IMC</title>
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+    
+      <!-- Favicons -->
+      <link href="{% static 'assets/img/favicon.png'%}" rel="icon">
+      <link href="{% static 'assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+    
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+      <!-- Vendor CSS Files -->
+      <link href="{% static 'assetss/vendorr/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+      <link href="{% static 'assetss/vendorr/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+      <link href="{% static 'assetss/vendorr/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+      <link href="{% static 'assetss/vendorr/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+      <link href="{% static 'assetss/vendorr/remixicon/remixicon.css'%}" rel="stylesheet">
+      <link href="{% static 'assetss/vendorr/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+    
+      <!-- Template Main CSS File -->
+      <link href="{% static 'assets/css/style.css'%}" rel="stylesheet">
+      <link href="{% static 'assetss/css/style.css'%}" rel="stylesheet">
+    
+      
+    </head>
     <style>
-      .display-4{
-        line-height: 1;
-        font-size: calc(1.475rem + 2.7vw);
-        font-weight: 300;
-        }
-        .wrapper {
-            display: table;
-            height: 100%;
-            width: 100%;
-        }
-
-        .container-fostrap {
-            display: table-cell;
-            padding: 1em;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        .fostrap-logo {
-            width: 100px;
-            margin-bottom: 15px
-        }
-
-        h1.heading {
-            color: #fff;
-            font-size: 1.15em;
-            font-weight: 900;
-            margin: 0 0 0.5em;
-            color: #505050;
-        }
-
-        @media (min-width: 450px) {
-            h1.heading {
-                font-size: 3.55em;
-            }
-        }
-
-        @media (min-width: 760px) {
-            h1.heading {
-                font-size: 3.05em;
-            }
-        }
-
-        @media (min-width: 900px) {
-            h1.heading {
-                font-size: 3.25em;
-                margin: 0 0 0.3em;
-            }
-        }
-
-        .card {
-            display: block;
-            margin-bottom: 20px;
-            line-height: 1.42857143;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            background-color: #f8f9fa;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .img-card {
-            width: 100%;
-            height: 200px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            display: block;
-            overflow: hidden;
-        }
-
-        .img-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: all .25s ease;
-        }
-
-        .card-content {
-            padding: 15px;
-            text-align: left;
-        }
-
-        .card-title {
-            margin-top: 0px;
-            font-weight: 700;
-            font-size: 1.65em;
-        }
-
-        .card-title a {
-            color: #000;
-            text-decoration: none !important;
-        }
-
-        .card-read-more {
-            border-top: 1px solid #D4D4D4;
-        }
-
-        .card-read-more a {
-            text-decoration: none !important;
-            padding: 10px;
-            font-weight: 600;
-            text-transform: uppercase
-        }
-    </style>
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary d-none d-lg-block">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'index' %}">IMC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'courses' %}">courses</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'videos' %}">videos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'projects' %}">projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'quiz' %}">quiz</a>
-                    </li>
-                </ul>
-                <a href="{% url 'logout' %}" class="btn btn-primary ms-2">Logout</a>
-                <a href="{% url 'home' %}" class="btn btn-primary ms-2">profile</a>
-            </div>
+          .display-4 {
+            line-height: 4;
+            font-size: calc(1.475rem + 2.7vw);
+            font-weight: 500;
+            margin-top: 50px; /* Ajout de la marge supérieure */
+          }
+          .wrapper {
+              display: table;
+              padding: 1em;
+              line-height: 1;
+              height: 100%;
+              width: 100%;
+          }
+  
+          .container-fostrap {
+              display: table-cell;
+              padding: 1em;
+              text-align: center;
+              vertical-align: middle;
+          }
+  
+          .fostrap-logo {
+              width: 100px;
+              margin-bottom: 15px
+          }
+  
+          h1.heading {
+              color: #fff;
+              font-size: 1.15em;
+              font-weight: 900;
+              margin: 0 0 0.5em;
+              color: #505050;
+          }
+  
+          @media (min-width: 450px) {
+              h1.heading {
+                  font-size: 3.55em;
+              }
+          }
+  
+          @media (min-width: 760px) {
+              h1.heading {
+                  font-size: 3.05em;
+              }
+          }
+  
+          @media (min-width: 900px) {
+              h1.heading {
+                  font-size: 3.25em;
+                  margin: 0 0 0.3em;
+              }
+          }
+  
+          .card {
+              display: block;
+              margin-bottom: 20px;
+              line-height: 1.42857143;
+              background-color: #fff;
+              border-radius: 10px;
+              box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+              transition: all 0.3s ease;
+              background-color: #f8f9fa;
+          }
+  
+          .card:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+          }
+  
+          .img-card {
+              width: 100%;
+              height: 200px;
+              border-top-left-radius: 10px;
+              border-top-right-radius: 10px;
+              display: block;
+              overflow: hidden;
+          }
+  
+          .img-card img {
+              width: 100%;
+              height: 200px;
+              object-fit: cover;
+              transition: all .25s ease;
+          }
+  
+          .card-content {
+              padding: 15px;
+              text-align: left;
+          }
+  
+          .card-title {
+              margin-top: 0px;
+              font-weight: 700;
+              font-size: 1.65em;
+          }
+  
+          .card-title a {
+              color: #000;
+              text-decoration: none !important;
+          }
+  
+          .card-read-more {
+              border-top: 1px solid #D4D4D4;
+          }
+  
+          .card-read-more a {
+              text-decoration: none !important;
+              padding: 10px;
+              font-weight: 600;
+              text-transform: uppercase
+          }
+      </style>
+    
+    <body>
+    
+      <!-- ======= Header ======= -->
+      <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center justify-content-between">
+    
+          <h1 class="logo"><a href="{% url 'index' %}">IMC</a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+    
+          <nav id="navbar" class="navbar">
+            
+            <ul>
+              <li><a class="nav-link scrollto " href="{% url 'index' %}">Home</a></li>
+              <li><a class="nav-link scrollto active" href="{% url 'courses' %}">Courses</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'videos' %}">Videos</a></li>
+              <li><a class="nav-link scrollto " href="{% url 'projects' %}">Projects</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'quiz' %}">Quizes</a></li>
+            
+             
+              
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+    
         </div>
-    </nav>
+      </header><!-- End Header -->
+    
+      
+    
+      <main id="main">
+         
+    <h1 class="display-4 text-center my-1">All Courses</h1>
 
-    <h1 class="display-4 text-center my-5">All Courses</h1>
-
-    <form class="container d-flex my-4" role="search" action="{% url 'search_bar' %}" method="post">
+    <form class="container d-flex my-0.5" role="search" action="{% url 'search_bar' %}" method="post">
       {% csrf_token %}
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+      <input class="form-control me-0.5" type="search" placeholder="Search" aria-label="Search" name="searched">
       <button type="submit" class="btn btn-primary ms-2">Search</button>
   </form>
 
@@ -205,7 +230,51 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 		crossorigin="anonymous"></script>
-
+    
+        
+    
+      
+      <!-- Vendor JS Files -->
+      <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js'%}"></script>
+      <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+      <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+      <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+      <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+      <script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js'%}"></script>
+      <script src="{% static 'assets/vendor/php-email-form/validate.js'%}"></script>
+    
+      <!-- Template Main JS File -->
+      <script src="{% static 'assets/js/main.js'%}"></script>
+        
+    
+        </div>
+       
+        <script src="{% static 'js/jquery-3.3.1.min.js'%}"></script>
+        <script src="{% static 'js/popper.min.js'%}"></script>
+        <script src="{% static 'js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+        <script src="{% static 'js/jquery.sticky.js'%}"></script>
+        <script src="{% static 'js/jquery.waypoints.min.js'%}"></script>
+        <script src="{% static 'js/jquery.animateNumber.min.js'%}"></script>
+        <script src="{% static 'js/jquery.fancybox.min.js'%}"></script>
+        <script src="{% static 'js/jquery.easing.1.3.js'%}"></script>
+        <script src="{% static 'js/bootstrap-datepicker.min.js'%}"></script>
+        <script src="{% static 'js/aos.js'%}"></script>
+    
+        <script src="{% static 'js/main.js'%}"></script>
+    
+      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    
+      <!-- Vendor JS Files -->
+      <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+      <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+      <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+      <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+      <script src="{% static 'assets/vendor/php-email-form/validate.js'%}"></script>
+    
+      <!-- Template Main JS File -->
+      <script src="{% static 'assets/js/main.js'%}"></script>
+    
 </body>
-
+    
 </html>

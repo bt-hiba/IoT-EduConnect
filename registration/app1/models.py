@@ -49,3 +49,25 @@ class Projects(models.Model):
     
 def __str__(self):
   return self.title
+
+
+class QuizLevel(models.Model):
+    level_name = models.CharField(max_length=50, unique=True)
+    description = models.TextField()
+    total_questions = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.level_name
+
+class Questions(models.Model):
+    level = models.ForeignKey(QuizLevel, on_delete=models.CASCADE)
+    question_text = models.TextField()
+    choice1 = models.CharField(max_length=100)
+    choice2 = models.CharField(max_length=100)
+    choice3 = models.CharField(max_length=100)
+    choice4 = models.CharField(max_length=100)
+    correct_answer = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.question_text
+
