@@ -45,6 +45,11 @@
                 <span>Quizes</span>
              </li>
              <li>
+               <i class="uil uil-clipboard-notes"></i>
+               <a href="{% url 'admin_questions' %}">
+               <span>Questions</span>
+            </li>
+             <li>
                 <i class="uil uil-signin"></i>
                 <a href="{% url 'logout' %}">
                     <span>Logout</span>
@@ -101,7 +106,7 @@
             <div class="single-card">
                <div>
                   <span>Quizes</span>
-                  <h2>18</h2>
+                  <h2>{{ total_levels }}</h2>
                </div>
                
             </div>
@@ -111,9 +116,9 @@
          <section class="attendance">
             <div class="attendance-list">
                <div class="card-header flex">
-                  <h3>All Courses</h3>
-                  <a href="{% url 'add_projects' %}" class="add-user-button">Add quiz <i class="uil uil-plus"></i></a>
-
+                  <h3>All Quizzes</h3>
+                  <a href="{% url 'add_level' %}" class="add-user-button">Add Levels <i class="uil uil-plus"></i></a>
+                  <a href="{% url 'add_quiz' %}" class="add-user-button">Add Questions <i class="uil uil-plus"></i></a>
                   
                </div>
                <table class="table">
@@ -121,26 +126,24 @@
                     <thead>
                         <tr>
                             <th scope="col">id</th>
-                            <th scope="col">Title</th>
+                            <th scope="col">Level</th>
                             <th scope="col">Description</th>
-                            <th scope="col">pdf</th>
-                            <th scope="col">image</th>
+                            <th scope="col">Total Questions</th>
                             <th scope="col">Actions</th> 
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        {% for x in imgg %}
+                        {% for x in imgggg %}
                         <tr>
                             <th scope="row">{{ x.id }}</th>
-                            <td>{{ x.title }}</td>
+                            <td>{{ x.level_name }}</td>
                             <td>{{ x.description }}</td>
-                            <td>{{ x.pdf }}</td>
-                            <td><img src="{{ x.image.url }}" alt="{{ x.title }}" style="max-width: 100px; max-height: 100px;"></td>
+                            <td>{{ x.total_questions }}</td>
                             <td class="actions"> 
-                                    <a href="{% url 'edit_course' x.id %}">
+                                    <a href="{% url 'edit_level' x.id %}">
                                         <i class="uil uil-edit edit-icon"></i> <!-- Icône d'édition -->
                                     </a>
-                                    <a href="{% url 'delete_cours' x.id %}">
+                                    <a href="{% url 'delete_level' x.id %}">
                                         <i class="uil uil-trash-alt delete-icon"></i> <!-- Icône de suppression -->
                                     </a>
                                 </td>

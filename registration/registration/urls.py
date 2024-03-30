@@ -34,6 +34,7 @@ urlpatterns = [
     path('admin_videos/',views.AdVideosPage,name='admin_videos'),
     path('admin_projects/',views.AdProjectsPage,name='admin_projects'),
     path('admin_quizes/',views.AdQuizesPage,name='admin_quizes'),
+    path('admin_questions/',views.AdQuestionsPage,name='admin_questions'),
     
     path('courses/',views.CoursesPage,name='courses'),
     path('add_courses/',views.Add_CoursesPage,name='add_courses'),
@@ -43,10 +44,12 @@ urlpatterns = [
     path('cours/<int:courses_id>/delete/', views.delete_cours, name='delete_cours'),
     path('video/<int:videos_id>/delete/', views.delete_video, name='delete_video'),
     path('project/<int:projects_id>/delete/', views.delete_project, name='delete_project'),
+    path('level/<int:levels_id>/delete/', views.delete_level, name='delete_level'),
     
     path('edit_course/<int:course_id>/', views.EditCoursPage, name='edit_course'),
     path('edit_video/<int:video_id>/', views.EditVideoPage, name='edit_video'),
     path('edit_project/<int:project_id>/', views.EditProjectPage, name='edit_project'),
+    path('edit_level/<int:level_id>/', views.EditLevelPage, name='edit_level'),
     
     path('videos/',views.VideosPage,name='videos'),
     path('add_video/',views.Add_videoPage,name='add_video'),

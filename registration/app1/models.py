@@ -18,7 +18,7 @@ def __str__(self):
   return self.country
 
 class Videos(models.Model):  
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=300)
     description = models.TextField()
     image=models.ImageField(upload_to="img/%y")
     video_url = models.FileField(upload_to="videos/%Y")

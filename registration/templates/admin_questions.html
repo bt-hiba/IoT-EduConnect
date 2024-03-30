@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Admin Dashboard </title>
+   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+   
+   <link href="{% static 'css/admin.css'%}" rel="stylesheet">
+</head>
+<body>
+   <div class="sidebar" id="sidebar">
+      <div class="logo">
+        <h2>
+            <i class="uil uil-robot"></i>
+            IMC
+         </h2>
+      </div>
+
+      <div class="sidebar-menu">
+         <ul>
+            <li>
+               <i class="uil uil-dashboard"></i>
+               <a href="{% url 'admin' %}">
+               <span>Dashboard</span>
+            </li>
+            <li>
+                <i class="uil uil-book"></i>
+                <a href="{% url 'admin_courses' %}">
+                <span>Courses</span>
+             </li>
+             <li>
+                <i class="uil uil-video"></i>
+                <a href="{% url 'admin_videos' %}">
+                <span>Videos</span>
+             </li>
+             <li>
+                 <i class="uil uil-file-alt"></i>
+                 <a href="{% url 'admin_projects' %}">
+                 <span>Projects</span>
+              </li>
+             <li>
+                <i class="uil uil-clipboard-notes"></i>
+                <a href="{% url 'admin_quizes' %}">
+                <span>Quizes</span>
+             </li>
+             <li>
+               <i class="uil uil-clipboard-notes"></i>
+               <a href="{% url 'admin_questions' %}">
+               <span>Questions</span>
+            </li>
+             <li>
+                <i class="uil uil-signin"></i>
+                <a href="{% url 'logout' %}">
+                    <span>Logout</span>
+                </a>
+            </li>
+            
+         </ul>
+      </div>
+   </div>
+
+   <div class="main-content" id="main-content">
+      <header class="flex">
+         <h2>
+            <i class="uil uil-bars" id="menu-icon"></i>
+            Dashboard
+         </h2>
+
+         <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search Here...">
+         </div>
+
+         <div class="admin-box flex">
+            <div class="profile-icon" onclick="toggleProfileInfo()">
+                <i class="uil uil-user-circle profile-icon-large"></i>
+                <div class="profile-info" id="profile-info">
+                    <h4>Username :{{ user.username }}</h4>
+                    <small>Email :{{ user.email }}</small>
+                </div>
+            </div>
+        </div>
+      </header>
+
+      <main>
+         <div class="cards">
+            <div class="single-card">
+                <div>
+                    <span>Courses</span>
+                    <h2>{{ total_courses }}</h2>
+                 </div>
+              </div>
+              <div class="single-card">
+                 <div>
+                    <span>Videos</span>
+                    <h2>{{ total_videos }}</h2>
+                 </div>
+              </div>
+              <div class="single-card">
+                 <div>
+                    <span>Projects</span>
+                    <h2>{{ total_projects }}</h2>
+                 </div>
+              </div>
+            <div class="single-card">
+               <div>
+                  <span>Quizes</span>
+                  <h2>{{ total_levels }}</h2>
+               </div>
+               
+            </div>
+         </div>
+
+
+         <section class="attendance">
+            <div class="attendance-list">
+               <div class="card-header flex">
+                  <h3>All Questions</h3>
+                  <a href="{% url 'add_quiz' %}" class="add-user-button">Add Question <i class="uil uil-plus"></i></a>
+                  
+               </div>
+               <table class="table">
+               
+                    <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Level</th>
+                            <th scope="col">question</th>
+                            <th scope="col">Total Questions</th>
+                            <th scope="col">Actions</th> 
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        {% for x in imggggg %}
+                        <tr>
+                            <th scope="row">{{ x.id }}</th>
+                            <td>{{ x.level }}</td>
+                            <td>{{ x.question_text }}</td>
+                            <td>{{ x.choice1 }}</td>
+                            <td>{{ x.correct_answer }}</td>
+                            <td class="actions"> 
+                                    <a href="{% url 'edit_course' x.id %}">
+                                        <i class="uil uil-edit edit-icon"></i> <!-- Icône d'édition -->
+                                    </a>
+                                    <a href="{% url 'delete_cours' x.id %}">
+                                        <i class="uil uil-trash-alt delete-icon"></i> <!-- Icône de suppression -->
+                                    </a>
+                                </td>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+               </table>
+            </div>
+            </section>
+      </main>
+   </div>
+
+   <script>
+    function toggleProfileInfo() {
+        var profileInfo = document.getElementById("profile-info");
+        profileInfo.classList.toggle("show");
+      }
+      let sideBar = document.getElementById('sidebar');
+      let menuIcon = document.getElementById('menu-icon');
+      let mainContent = document.getElementById('main-content');
+
+      menuIcon.onclick = () => {
+         sideBar.classList.toggle('toggleMenu');
+         mainContent.classList.toggle('toggleContent');
+      }
+   </script>
+</body>
+</html>

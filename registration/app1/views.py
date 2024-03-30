@@ -26,39 +26,54 @@ def AdminPage(request):
     total_courses = Courses.objects.count()
     total_videos = Videos.objects.count()
     total_projects = Projects.objects.count()
+    total_levels = QuizLevel.objects.count()
     users = User.objects.all()
-    return render(request, "admin.html", {'user': user, "users": users,'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects})
+    return render(request, "admin.html", {'user': user, "users": users,'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects, 'total_levels': total_levels})
 
 def AdCoursesPage(request):
     user = request.user 
     total_courses = Courses.objects.count()
     total_videos = Videos.objects.count()
     total_projects = Projects.objects.count()
+    total_levels = QuizLevel.objects.count()
     imgg = Courses.objects.all()
-    return render(request, "admin_courses.html", {'user': user,"imgg": imgg, 'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects})
+    return render(request, "admin_courses.html", {'user': user,"imgg": imgg, 'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects, 'total_levels': total_levels})
 
 def AdVideosPage(request):
     user = request.user 
     total_courses = Courses.objects.count()
     total_videos = Videos.objects.count()
     total_projects = Projects.objects.count()
+    total_levels = QuizLevel.objects.count()
     img = Videos.objects.all()
-    return render(request, "admin_videos.html", {'user': user,"img": img,'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects})
+    return render(request, "admin_videos.html", {'user': user,"img": img,'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects, 'total_levels': total_levels})
 
 def AdProjectsPage(request):
     user = request.user 
     total_courses = Courses.objects.count()
     total_videos = Videos.objects.count()
     total_projects = Projects.objects.count()
+    total_levels = QuizLevel.objects.count()
     imggg=Projects.objects.all()
-    return render(request, "admin_projects.html", { 'user': user,"imggg": imggg, 'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects})
+    return render(request, "admin_projects.html", { 'user': user,"imggg": imggg, 'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects, 'total_levels': total_levels})
 
 def AdQuizesPage(request):
     user = request.user 
     total_courses = Courses.objects.count()
     total_videos = Videos.objects.count()
     total_projects = Projects.objects.count()
-    return render (request,'admin_quizes.html', {'user': user,'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects})
+    total_levels = QuizLevel.objects.count()
+    imgggg=QuizLevel.objects.all()
+    return render(request,'admin_quizes.html', {'user': user,"imgggg": imgggg,'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects, 'total_levels': total_levels})
+
+def AdQuestionsPage(request):
+    user = request.user 
+    total_courses = Courses.objects.count()
+    total_videos = Videos.objects.count()
+    total_projects = Projects.objects.count()
+    total_levels = QuizLevel.objects.count()
+    imggggg=Questions.objects.all()
+    return render(request,'admin_quizes.html', {'user': user,"imggggg": imggggg,'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects})
 
 
 
@@ -246,6 +261,7 @@ def SearchBar(request):
             return render(request, 'search_bar.html', {"searched": searched, "courses": courses})
     return render(request, 'search_bar.html', {"courses": courses})  
 
+
 def quiz(request):
     questions = Questions.objects.all()
     score = None
@@ -284,6 +300,22 @@ def Add_LevelPage(request):
        forrrrrm=QuizLevelForm ()
      imggggg=QuizLevel.objects.all()
      return render(request,"add_level.html",{"imggggg":imggggg,"forrrrrm":forrrrrm})
+ 
+def delete_level(request, levels_id):
+    level = get_object_or_404(QuizLevel, pk=levels_id)
+    level.delete()
+    return redirect('admin_quizes')
+
+def EditLevelPage(request, level_id):
+    level = get_object_or_404(QuizLevel, id=level_id)
+    if request.method == 'POST':
+        forrrmm = QuizLevelForm(request.POST, instance=level)
+        if forrrmm.is_valid():
+            forrrmm.save()
+            return redirect('admin_quizes')  
+    else:
+        forrrmm = QuizLevelForm(instance=level)
+    return render(request, 'admin_editquiz.html', {'forrrmm': forrrmm})
 
 
 def SearchVd(request):

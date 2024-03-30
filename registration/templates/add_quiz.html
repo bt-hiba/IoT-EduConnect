@@ -1,92 +1,159 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Video</title>
-
-<style>
-    
- .header {
-    background-color: #f0f0f0; /* Couleur de fond */
-    color: #fff; /* Couleur du texte */
-    padding: 10px 20px; /* Espacement intérieur */
-  }
-  .header .flex {
-      display: flex;
-      justify-content: space-between; /* Répartir les éléments horizontalement */
-      align-items: center;
-  }
-  
-  .header .flex .right-align {
-      margin-left: auto; /* Aligner à droite */
-      margin-left: 10px; /* Réduire l'espace entre les liens */
-  }
-  
-  
-  .header .logo {
-    font-size: 24px; /* Taille de la police pour le logo */
-    text-decoration: none; /* Supprimer le soulignement des liens */
-  }
-  
-  .header .flex a {
-    color: #000; /* Couleur du texte des liens */
-    margin-left: 30px; /* Marge à gauche pour les éléments suivants du logo */
-    text-decoration: none; /* Supprimer le soulignement des liens */
-  }
-  
-  .header .flex a:hover {
-    color: #ccc; /* Couleur du texte des liens au survol */
-  }
-  .form-container {
-    max-width: 500px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-.form-container button {
-    margin-top: 10px;
-}
-
-.success-message {
-    margin-top: 20px;
-}
-
-</style>  
-<body>
-    <header class="header">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Admin Dashboard </title>
+   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
    
-        <section class="flex">
-      
-           <a href="{% url 'home' %}" class="logo">Educa.</a>
-           <a href="{% url 'home' %}"><i></i>home</a>
-           <a href="{% url 'courses' %}"><i></i>courses</a>
-           <a href="{% url 'videos' %}"><i></i>videos</a>
-           <a href="{% url 'projects' %}"><i></i>projects</a>
-           <a href="{% url 'all_quiz' %}"><i></i>all_quiz</a>
-           <a href="{% url 'quiz' %}"><i></i>quiz</a>
-           <a href="{% url 'logout' %}"><i></i>logout</a>
-      
-        </section>
-      
-      </header> 
-    <div class="container">
-        <form action="." method="post" enctype="multipart/form-data" class="form-container">
+   <link href="{% static 'css/admin.css'%}" rel="stylesheet">
+</head>
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto; /* Marge automatique en haut et en bas, et centrage horizontal */
+        padding: 9px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    
+    
+    .form-container input[type="text"],
+    .form-container input[type="email"],
+    .form-container textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 6px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    .form-container button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+    
+    .form-container button:hover {
+        background-color: #45a049;
+    }
+    
+    /* Style the success message */
+    .success-message {
+        margin-top: 20px;
+        font-weight: bold;
+        color: green;
+    }
+    
+</style>
+<body>
+   <div class="sidebar" id="sidebar">
+      <div class="logo">
+        <h2>
+            <i class="uil uil-robot"></i>
+            IMC
+         </h2>
+      </div>
 
-            {% csrf_token %}
-            {{forrrrm.as_p}}
+      <div class="sidebar-menu">
+         <ul>
+            <li>
+               <i class="uil uil-dashboard"></i>
+               <a href="{% url 'admin' %}">
+               <span>Dashboard</span>
+            </li>
+            <li>
+                <i class="uil uil-book"></i>
+                <a href="{% url 'admin_courses' %}">
+                <span>Courses</span>
+             </li>
+             <li>
+                <i class="uil uil-video"></i>
+                <a href="{% url 'admin_videos' %}">
+                <span>Videos</span>
+             </li>
+             <li>
+                 <i class="uil uil-file-alt"></i>
+                 <a href="{% url 'admin_projects' %}">
+                 <span>Projects</span>
+              </li>
+             <li>
+                <i class="uil uil-clipboard-notes"></i>
+                <a href="{% url 'admin_quizes' %}">
+                <span>Quizes</span>
+             </li>
+            <li>
+                <i class="uil uil-signin"></i>
+                <a href="{% url 'logout' %}">
+                    <span>Logout</span>
+                </a>
+            </li>
             
-            <button type="submit" class="btn btn-lg btn-success">Upload</button>
-            </form>
+         </ul>
+      </div>
+   </div>
+
+   <div class="main-content" id="main-content">
+      <header class="flex">
+         <h2>
+            <i class="uil uil-bars" id="menu-icon"></i>
+            Dashboard
+         </h2>
+
+         <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search Here...">
+         </div>
+
+         <div class="admin-box flex">
+            <div class="profile-icon" onclick="toggleProfileInfo()">
+                <i class="uil uil-user-circle profile-icon-large"></i>
+                <div class="profile-info" id="profile-info">
+                    <h4>Username :{{ user.username }}</h4>
+                    <small>Email :{{ user.email }}</small>
+                </div>
+            </div>
+        </div>
+      </header>
+
+      <main>
+        <h1 class="display-4 text-center my-5"><center>Add Question</h1>
+            <form action="." method="post" enctype="multipart/form-data" class="form-container">
+
+              {% csrf_token %}
+              {{forrrrm.as_p}}
+              
+              <button type="submit" class="btn btn-lg btn-success">Upload</button>
+              </form>
+              
+              {% if objjjj %}
+              <h3>Succesfully uploaded : </h3>
+              {% endif %}
             
-            {% if objjjj %}
-            <h3>Succesfully uploaded : </h3>
-            {% endif %}
 
-    </div>
+      </main>
+   </div>
 
+   <script>
+    function toggleProfileInfo() {
+        var profileInfo = document.getElementById("profile-info");
+        profileInfo.classList.toggle("show");
+      }
+      let sideBar = document.getElementById('sidebar');
+      let menuIcon = document.getElementById('menu-icon');
+      let mainContent = document.getElementById('main-content');
+
+      menuIcon.onclick = () => {
+         sideBar.classList.toggle('toggleMenu');
+         mainContent.classList.toggle('toggleContent');
+      }
+   </script>
 </body>
 </html>
