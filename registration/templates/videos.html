@@ -181,7 +181,21 @@
           <li><a class="nav-link scrollto active" href="{% url 'videos' %}">Videos</a></li>
           <li><a class="nav-link scrollto " href="{% url 'projects' %}">Projects</a></li>
           <li><a class="nav-link scrollto" href="{% url 'all_quiz' %}">Quizes</a></li>
-        
+          <li>
+            <!-- Icône de profil -->
+        <div class="profile-icon" onclick="toggleProfileInfo()">
+          <i class="bi bi-person-circle" style="color: white;"></i>
+        </div>
+        <!-- Boîte d'informations de l'utilisateur -->
+        <div class="profile-info" id="profile-info" style="display: none; position: absolute; background-color: white; padding: 10px; top: 50px; right: 0;">
+          <h5>Username: {{ user.username }}</h5>
+          <small>Email: {{ user.email }}</small>
+          <br> <!-- Ajout d'un saut de ligne -->
+          <br>
+          <!-- Bouton de déconnexion -->
+          <button type="submit" class="btn btn-primary ms-2" onclick="logout()" style="background-color: blue; width: 90%; color: white;">Logout</button>
+        </div>
+        </li>
          
           
         </ul>
@@ -293,6 +307,17 @@
   
     <!-- Template Main JS File -->
     <script src="{% static 'assets/js/main.js'%}"></script>
+    <script>
+      function toggleProfileInfo() {
+        var profileInfo = document.getElementById("profile-info");
+        profileInfo.style.display = profileInfo.style.display === "none" ? "block" : "none";
+      }
+      function logout() {
+          // Votre code de déconnexion ici
+          // Par exemple, redirection vers la page de déconnexion
+          window.location.href = "{% url 'logout' %}";
+      }
+    </script>
   
 </body>
   

@@ -31,36 +31,42 @@
 
   
 </head>
-
-<body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <h1 class="logo"><a href="{% url 'index' %}">IMC</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'index' %}">Home</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'courses' %}">Courses</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'videos' %}">Videos</a></li>
-          <li><a class="nav-link scrollto " href="{% url 'projects' %}">Projects</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'quiz' %}">Quizes</a></li>
-        
-         
-          
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
   
-
+  <body>
+  
+    <!-- Header -->
+    <header id="header" class="fixed-top ">
+      <div class="container d-flex align-items-center justify-content-between">
+        <h1 class="logo"><a href="{% url 'index' %}">IMC</a></h1>
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link scrollto active" href="{% url 'index' %}">Home</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'courses' %}">Courses</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'videos' %}">Videos</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'projects' %}">Projects</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'quiz' %}">Quizzes</a></li>
+            <li>
+                <!-- Icône de profil -->
+            <div class="profile-icon" onclick="toggleProfileInfo()">
+              <i class="bi bi-person-circle" style="color: white;"></i>
+            </div>
+            <!-- Boîte d'informations de l'utilisateur -->
+            <div class="profile-info" id="profile-info" style="display: none; position: absolute; background-color: white; padding: 10px; top: 50px; right: 0;">
+              <h5>Username: {{ user.username }}</h5>
+              <small>Email: {{ user.email }}</small>
+            </div>
+            </li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+      </div>
+    </header>
+    <!-- End Header -->
+  
+    <!-- Vos autres éléments de contenu -->
+    
+  
+  
   <main id="main">
 
     
@@ -106,6 +112,14 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'assets/js/main.js'%}"></script>
+
+    <!-- Vos scripts JS -->
+    <script>
+      function toggleProfileInfo() {
+        var profileInfo = document.getElementById("profile-info");
+        profileInfo.style.display = profileInfo.style.display === "none" ? "block" : "none";
+      }
+    </script>
 
 </body>
 

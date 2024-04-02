@@ -1,5 +1,5 @@
 from django import forms
-from .models import Videos , Courses , Projects , QuizLevel, Questions
+from .models import Videos , Courses , Projects , QuizLevel, Questions, Contact
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth.models import User
 
@@ -7,6 +7,11 @@ class VideosForm(forms.ModelForm):
   class Meta:
     model=Videos
     fields=("title","description","image","video_url")
+    
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email', 'subject', 'message']
     
 
 class CoursesForm(forms.ModelForm):

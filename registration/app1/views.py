@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import VideosForm  , CoursesForm , ProjectsForm , UserCreationForm , QuizLevelForm , QuestionsForm 
-from .models import Videos , Comment , Courses , Projects , QuizLevel , Questions 
+from .forms import VideosForm  , CoursesForm , ProjectsForm , UserCreationForm , QuizLevelForm , QuestionsForm , ContactForm
+from .models import Videos , Comment , Courses , Projects , QuizLevel , Questions , Contact
 
 # Create your views here.
 
@@ -72,8 +72,8 @@ def AdQuestionsPage(request):
     total_videos = Videos.objects.count()
     total_projects = Projects.objects.count()
     total_levels = QuizLevel.objects.count()
-    imggggg=Questions.objects.all()
-    return render(request,'admin_quizes.html', {'user': user,"imggggg": imggggg,'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects})
+    im=Questions.objects.all()
+    return render(request,'admin_questions.html', {'user': user,"im": im,'total_courses': total_courses, 'total_videos': total_videos, 'total_projects': total_projects, 'total_levels' : total_levels })
 
 
 
@@ -208,10 +208,18 @@ def add_comment(request, videos_id):
 
 
 def IndexPage(request):
-    return render (request,'index.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = ContactForm()
+    return render(request, 'index.html', {'form': form})
 
 def HeaderPage(request):
-    return render (request,'header.html')
+    user = request.user
+    return render (request,'header.html',{'user': user})
 
 @login_required(login_url='login')
 def ProjectsPage(request):

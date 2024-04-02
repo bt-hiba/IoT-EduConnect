@@ -127,17 +127,18 @@
                             <th scope="col">id</th>
                             <th scope="col">Level</th>
                             <th scope="col">question</th>
-                            <th scope="col">Total Questions</th>
+                            <th scope="col">choises</th>
+                            <th scope="col">correct_answers</th>
                             <th scope="col">Actions</th> 
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        {% for x in imggggg %}
+                        {% for x in im %}
                         <tr>
                             <th scope="row">{{ x.id }}</th>
                             <td>{{ x.level }}</td>
                             <td>{{ x.question_text }}</td>
-                            <td>{{ x.choice1 }}</td>
+                            <td>4</td>
                             <td>{{ x.correct_answer }}</td>
                             <td class="actions"> 
                                     <a href="{% url 'edit_course' x.id %}">

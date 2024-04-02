@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Videos , Comment , Courses , Projects , Questions , QuizLevel
+from .models import Videos , Comment , Courses , Projects , Questions , QuizLevel, Contact
 
 
 # Register your models here.
@@ -9,3 +9,4 @@ admin.site.register(Courses)
 admin.site.register(Projects)
 admin.site.register(Questions)
 admin.site.register(QuizLevel)
+admin.site.register(Contact)
